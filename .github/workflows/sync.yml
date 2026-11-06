@@ -1,0 +1,44 @@
+name: Sincronizar datos desde Google Sheets
+
+on:
+  schedule:
+    # Todos los días a las 06:00 de Lima (11:00 UTC)
+    - cron: "0 11 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-data
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Generar datos agregados
+        env:
+          SHEET_ID: ${{ secrets.SHEET_ID }}
+        run: python scripts/etl.py
+
+      - name: Guardar cambios
+        run: |
+          if git diff --quiet -- public/data; then
+            echo "Sin cambios en los datos."
+            exit 0
+          fi
+          git config user.name "rotoplas-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/data
+          git commit -m "Datos actualizados $(TZ=America/Lima date +'%Y-%m-%d %H:%M') (Lima)"
+          git push
