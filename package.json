@@ -1,9 +1,0 @@
-{
-  "name": "rotoplas-tablero",
-  "private": true,
-  "version": "1.0.0",
-  "description": "Tablero comercial Rotoplas Perú (call center y WhatsApp) generado a diario desde Google Sheets.",
-  "dependencies": {
-    "@vercel/functions": "^2.2.0"
-  }
-}

@@ -14,14 +14,12 @@ Google Sheets ──(GitHub Actions, diario 06:00 Lima)──> public/data/rotop
    No se publican nombres de clientes, teléfonos ni comentarios: el repositorio es público.
 3. Si los datos cambiaron, el workflow hace commit y push. Vercel despliega cada push a `main`.
 4. **`public/index.html`** es el tablero (HTML estático + Chart.js) y lee el JSON.
-5. **`middleware.js`** protege el sitio con usuario y contraseña.
 
 ## Configuración
 
 | Dónde | Variable | Para qué |
 |---|---|---|
 | GitHub › Settings › Secrets › Actions | `SHEET_ID` | ID de la planilla de Google Sheets (no se guarda en el código) |
-| Vercel › Settings › Environment Variables | `DASHBOARD_USER`, `DASHBOARD_PASSWORD` | Acceso al tablero |
 
 La descarga usa el link de exportación de Google Sheets, así que la planilla tiene que poder leerse con el link.
 
