@@ -4,12 +4,12 @@ Tablero del call center y canal WhatsApp de Rotoplas Perú operado por Patagonia
 Se actualiza solo, todos los días, desde la planilla «Ventas Rotoplas <> Patagonia».
 
 ```
-Google Sheets ──(GitHub Actions, diario 06:00 Lima)──> public/data/rotoplas.json ──(push)──> Vercel
+Google Sheets ──(GitHub Actions, 06:00 y 20:00 Lima)──> public/data/rotoplas.json ──(push)──> Vercel
 ```
 
 ## Cómo funciona
 
-1. **`.github/workflows/sync.yml`** corre todos los días a las 06:00 de Lima (y a mano desde *Actions › Sincronizar datos › Run workflow*).
+1. **`.github/workflows/sync.yml`** corre todos los días a las 06:00 y a las 20:00 de Lima (y a mano desde *Actions › Sincronizar datos › Run workflow*).
 2. **`scripts/etl.py`** descarga la planilla y genera `public/data/rotoplas.json` con **solo agregados**: totales por mes, semana, día, asesor, familia, producto, provincia, origen, medio de pago y tramo de ticket; leads por mes; cotizaciones +S/ 10.000 y controles de calidad de datos.
    No se publican nombres de clientes, teléfonos ni comentarios: el repositorio es público.
 3. Si los datos cambiaron, el workflow hace commit y push. Vercel despliega cada push a `main`.
@@ -32,6 +32,8 @@ python -m http.server -d public 8000
 ```
 
 ## Cálculos
+
+- **¿Cómo venimos?** (arriba del tablero): venta del mes en curso del día 1 al último día con datos, contra la meta del mes y contra lo que vendió cada mes anterior en los mismos días. El ritmo esperado cuenta días hábiles de lunes a sábado (no descuenta feriados). Semáforo: *En ritmo* si el % de meta alcanza al % de días hábiles transcurridos, *Algo atrasado* desde el 80% de ese ritmo, *Atrasado* por debajo.
 
 - **Venta**: líneas de *Detalle de Ventas* con `ES VENTA = 1`, agrupadas por `PERÍODO` y `SEMANA`.
 - **Objetivo**: fila «Venta Objetivo (S/)» del *Evolutivo Mensual*.

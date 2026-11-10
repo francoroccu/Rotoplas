@@ -68,6 +68,15 @@ tr.tot td{font-weight:700;background:var(--tint)}
 .note{font-size:12.5px;color:var(--soft);margin:0}
 .sec-label{font:700 12px var(--display);letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-top:10px}
 [hidden]{display:none!important}
+/* ritmo del mes */
+.ritmo{gap:16px;border-width:2px}
+.ritmo.s-ok{border-color:#10b981}.ritmo.s-warn{border-color:#f59e0b}.ritmo.s-bad{border-color:#ef4444}
+.ritmo-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.ritmo-head h2{margin-top:4px}
+.sem{font:800 14px var(--display);padding:8px 16px;border-radius:999px;white-space:nowrap}
+.sem.ok{background:#e3f7ef;color:#047857}.sem.warn{background:#fef3dc;color:#a35a00}.sem.bad{background:#fde8e8;color:#b91c1c}
+.ritmo-msg{margin:0;font-size:15.5px;color:var(--fg);max-width:820px}
+tr.cur td{font-weight:700;background:var(--tint)}
 footer{background:var(--navy);color:#9fb0c8;font-size:12.5px}
 footer .in{padding-block:20px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 </style>
@@ -95,6 +104,20 @@ footer .in{padding-block:20px;display:flex;justify-content:space-between;gap:12p
 
 <!-- VISTA VENTAS -->
 <div id="vVentas" style="display:flex;flex-direction:column;gap:22px">
+  <!-- RITMO DEL MES: mes en curso vs meta y vs meses anteriores al mismo día -->
+  <section id="ritmo" class="card ritmo" hidden>
+    <div class="ritmo-head">
+      <div><span class="sec-label" style="margin:0">¿Cómo venimos?</span><h2 id="rTitle"></h2></div>
+      <span class="sem" id="rSem"></span>
+    </div>
+    <p class="ritmo-msg" id="rMsg"></p>
+    <div class="grid k4" id="rKpis"></div>
+    <div class="grid c2">
+      <div><h3 id="rChTitle">Avance acumulado de la meta, día a día</h3><div class="chart"><canvas id="chRitmo"></canvas></div><p class="note">La línea punteada es el ritmo parejo para llegar a la meta (lunes a sábado).</p></div>
+      <div class="scroll"><h3 id="rTabTitle"></h3><table id="tRitmo"></table></div>
+    </div>
+  </section>
+
   <div class="ptitle"><div><h2 id="pTitle"></h2><div class="sub" id="pSub"></div></div></div>
   <div class="grid k4" id="kpis"></div>
 
@@ -243,6 +266,53 @@ footer .in{padding-block:20px;display:flex;justify-content:space-between;gap:12p
     $('kLeads').innerHTML=kpi('Leads gestionados',g.toLocaleString('es-PE'),sp?sp+' sin período válido en la planilla':'')+kpi('Contactados',c.toLocaleString('es-PE'),P(c/g)+' de los gestionados')+kpi('Vendidos',String(v),'marcados con ¿VENDIÓ? = SÍ')+kpi('Conversión',P(c?v/c:null),'vendidos sobre contactados');
   }
   render();
+
+  // ---- Ritmo del mes: mes en curso vs meta y vs meses anteriores al mismo día
+  (function ritmo(){
+    const per=d.datos_hasta.slice(0,7), cur=M.at(-1);
+    if(!cur||cur.periodo!==per||!cur.objetivo) return;
+    const y=+per.slice(0,4), mo=+per.slice(5,7), N=+d.datos_hasta.slice(8), nd=new Date(y,mo,0).getDate();
+    const habil=k=>new Date(y,mo-1,k).getDay()!==0; // lunes a sábado
+    let tot=0, el=0; for(let k=1;k<=nd;k++) if(habil(k)){tot++; if(k<=N) el++;}
+    const esperado=el/tot;
+    const corte=(m,n)=>m.dias.reduce((a,x)=>{if(+x.fecha.slice(8)<=n){a.v+=x.venta;a.c+=x.casos;}return a;},{v:0,c:0});
+    const hoy=corte(cur,N), pct=hoy.v/cur.objetivo, ratio=pct/esperado;
+    const prev=M.slice(0,-1).map(m=>({m,...corte(m,N)}));
+    const promPrev=prev.length?prev.reduce((a,p)=>a+p.v,0)/prev.length:null;
+    const porDia=el?hoy.v/el:0, falta=Math.max(0,cur.objetivo-hoy.v), quedan=tot-el, necesita=quedan?falta/quedan:null, proy=porDia*tot;
+    const est=pct>=1?['ok','Meta cumplida']:ratio>=1?['ok','En ritmo']:ratio>=.8?['warn','Algo atrasado']:['bad','Atrasado'];
+    const mesTxt=short(cur), mesL=mesTxt.toLowerCase();
+
+    $('ritmo').hidden=false; $('ritmo').classList.add('s-'+est[0]);
+    $('rTitle').textContent=mesTxt+' al día '+N+': '+P(pct)+' de la meta';
+    $('rSem').className='sem '+est[0]; $('rSem').textContent=est[1];
+    $('rMsg').innerHTML=`Pasaron <b>${el} de ${tot} días hábiles</b> (${P(esperado)} del mes) y la venta va en <b>${P(pct)}</b> de la meta. `+
+      (pct>=1?'La meta del mes ya está cumplida.':`Para llegar faltan <b>${K(falta)}</b>: unos <b>${K(necesita)} por día hábil</b>, contra ${K(porDia)} por día que lleva el mes.`)+
+      (promPrev?` Comparado con los meses anteriores al mismo día, va <b>${(hoy.v/promPrev).toLocaleString('es-PE',{maximumFractionDigits:1})} veces</b> el promedio.`:'');
+    $('rKpis').innerHTML=
+      kpi('Venta al día '+N,K(hoy.v),hoy.c+' casos · meta '+K(cur.objetivo),pct)+
+      kpi('Ritmo esperado',P(esperado),el+' de '+tot+' días hábiles',esperado)+
+      kpi('Necesita por día',necesita==null?'—':K(necesita),'vs '+K(porDia)+' por día hasta hoy')+
+      kpi('Cierre si sigue igual',K(proy),P(proy/cur.objetivo)+' de la meta',proy/cur.objetivo);
+
+    // Tabla: mismo corte en cada mes
+    $('rTabTitle').textContent='Mismo corte (día 1 al '+N+') en cada mes';
+    const fila=(m,c,isCur)=>{const p=c.v/m.objetivo;return `<tr class="${isCur?'cur':''}"><td>${short(m)}</td><td class="r">${S(c.v)}</td><td class="r">${c.c}</td><td class="r"><span class="pill ${p>=esperado?'ok':p>=esperado*.8?'warn':'bad'}">${P(p)}</span></td><td class="r">${isCur?'en curso':P(m.cumplimiento)}</td></tr>`;};
+    $('tRitmo').innerHTML='<thead><tr><th>Mes</th><th class="r">Venta al día '+N+'</th><th class="r">Casos</th><th class="r">% meta al día '+N+'</th><th class="r">Cerró el mes</th></tr></thead><tbody>'+
+      prev.map(p=>fila(p.m,p,false)).join('')+fila(cur,hoy,true)+
+      (promPrev?`<tr class="tot"><td>Promedio anteriores</td><td class="r">${S(promPrev)}</td><td class="r">${Math.round(prev.reduce((a,p)=>a+p.c,0)/prev.length)}</td><td class="r">${P(prev.reduce((a,p)=>a+p.v/p.m.objetivo,0)/prev.length)}</td><td class="r">${P(prev.reduce((a,p)=>a+p.m.cumplimiento,0)/prev.length)}</td></tr>`:'')+'</tbody>';
+
+    // Gráfico: % de meta acumulado por día del mes
+    const dias=[...Array(31).keys()].map(k=>k+1);
+    const serie=(m,hasta)=>{const nd2=new Date(+m.periodo.slice(0,4),+m.periodo.slice(5,7),0).getDate();let a=0;const dm={};m.dias.forEach(x=>dm[+x.fecha.slice(8)]=(dm[+x.fecha.slice(8)]||0)+x.venta);return dias.map(k=>{if(k>Math.min(nd2,hasta))return null;a+=dm[k]||0;return a/m.objetivo;});};
+    let hb=0; const ideal=dias.map(k=>{if(k>nd)return null;if(habil(k))hb++;return hb/tot;});
+    const grises=['#cbd5e1','#94a3b8','#7dd3fc','#93c5fd','#a5b4fc','#c4b5fd'];
+    mk('chRitmo',{type:'line',data:{labels:dias,datasets:[
+      ...prev.map((p,i)=>({label:short(p.m),data:serie(p.m,31),borderColor:grises[(grises.length-prev.length+i)%grises.length],borderWidth:1.5,pointRadius:0,tension:.2})),
+      {label:mesTxt,data:serie(cur,N),borderColor:'#1a2332',backgroundColor:'#1a2332',borderWidth:3.5,pointRadius:0,pointHoverRadius:4,tension:.2},
+      {label:'Ritmo parejo',data:ideal,borderColor:C.orange,borderDash:[6,5],borderWidth:2,pointRadius:0}
+    ]},options:{maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{position:'bottom',labels:{boxWidth:12}},tooltip:{filter:i=>i.raw!=null,callbacks:{title:c=>'Día '+c[0].label,label:c=>c.dataset.label+': '+P(c.raw)}}},scales:{y:{min:0,ticks:{callback:v=>P(v)}},x:{ticks:{maxRotation:0,autoSkip:true,maxTicksLimit:16}}}}});
+  })();
 
   // ---- Vista seguimiento (estática)
   const ct=d.cotizaciones,pe=ct.por_estado;

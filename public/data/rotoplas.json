@@ -1,13 +1,13 @@
 {
- "actualizado": "2026-11-06T17:11-05:00",
- "datos_hasta": "2026-11-06",
+ "actualizado": "2026-11-10T04:47-05:00",
+ "datos_hasta": "2026-11-09",
  "moneda": "PEN",
  "acumulado": {
-  "venta": 1645711.84,
+  "venta": 1683683.81,
   "objetivo": 2562830.0,
-  "cumplimiento": 0.6421,
-  "casos": 797,
-  "unidades": 1486.0
+  "cumplimiento": 0.657,
+  "casos": 825,
+  "unidades": 1523.0
  },
  "meses": [
   {
@@ -2924,19 +2924,24 @@
   {
    "periodo": "2026-11",
    "nombre": "Noviembre 2026",
-   "venta": 85032.25,
+   "venta": 123004.22,
    "objetivo": 545472.0,
-   "cumplimiento": 0.1559,
-   "casos": 57,
-   "unidades": 73.0,
-   "ticket": 1491.79,
-   "venta_whatsapp": 82296.25,
+   "cumplimiento": 0.2255,
+   "casos": 85,
+   "unidades": 110.0,
+   "ticket": 1447.11,
+   "venta_whatsapp": 120268.22,
    "venta_llamada": 2736.0,
    "semanas": [
     {
      "semana": 1,
-     "venta": 85032.25,
-     "casos": 58
+     "venta": 91251.15,
+     "casos": 64
+    },
+    {
+     "semana": 2,
+     "venta": 31753.07,
+     "casos": 22
     }
    ],
    "dias": [
@@ -2962,47 +2967,64 @@
     },
     {
      "fecha": "2026-11-06",
-     "venta": 39586.4,
-     "casos": 16
+     "venta": 40335.4,
+     "casos": 17
+    },
+    {
+     "fecha": "2026-11-07",
+     "venta": 5469.9,
+     "casos": 5
+    },
+    {
+     "fecha": "2026-11-09",
+     "venta": 31753.07,
+     "casos": 22
     }
    ],
    "asesores": [
     {
      "nombre": "Jair",
-     "venta": 50984.85,
-     "lineas": 30,
-     "unidades": 31.0,
-     "casos": 21
-    },
-    {
-     "nombre": "Alberto",
-     "venta": 18171.8,
-     "lineas": 19,
-     "unidades": 21.0,
-     "casos": 19
+     "venta": 62726.55,
+     "lineas": 41,
+     "unidades": 45.0,
+     "casos": 32
     },
     {
      "nombre": "Facundo",
-     "venta": 15875.6,
-     "lineas": 20,
-     "unidades": 21.0,
-     "casos": 18
+     "venta": 38872.41,
+     "lineas": 35,
+     "unidades": 36.0,
+     "casos": 30
+    },
+    {
+     "nombre": "Alberto",
+     "venta": 21405.26,
+     "lineas": 24,
+     "unidades": 29.0,
+     "casos": 24
     }
    ],
    "familias": [
     {
      "nombre": "Tanque",
-     "venta": 49353.2,
-     "lineas": 36,
-     "unidades": 38.0,
-     "casos": 36
+     "venta": 63099.7,
+     "lineas": 48,
+     "unidades": 52.0,
+     "casos": 48
     },
     {
      "nombre": "Bombas",
-     "venta": 11496.0,
-     "lineas": 12,
-     "unidades": 14.0,
-     "casos": 12
+     "venta": 18467.56,
+     "lineas": 20,
+     "unidades": 23.0,
+     "casos": 20
+    },
+    {
+     "nombre": "Tanque industrial",
+     "venta": 13246.01,
+     "lineas": 1,
+     "unidades": 1.0,
+     "casos": 1
     },
     {
      "nombre": "Cisterna",
@@ -3020,10 +3042,17 @@
     },
     {
      "nombre": "Termas",
-     "venta": 2647.0,
-     "lineas": 3,
-     "unidades": 3.0,
-     "casos": 3
+     "venta": 4353.0,
+     "lineas": 6,
+     "unidades": 7.0,
+     "casos": 6
+    },
+    {
+     "nombre": "Otros",
+     "venta": 2297.4,
+     "lineas": 10,
+     "unidades": 11.0,
+     "casos": 6
     },
     {
      "nombre": "Tanque/cisterna",
@@ -3033,11 +3062,11 @@
      "casos": 1
     },
     {
-     "nombre": "Otros",
-     "venta": 1875.4,
-     "lineas": 7,
+     "nombre": "Purificadores",
+     "venta": 2023.0,
+     "lineas": 6,
      "unidades": 7.0,
-     "casos": 3
+     "casos": 6
     },
     {
      "nombre": "Tanque pisco y vino",
@@ -3047,11 +3076,11 @@
      "casos": 1
     },
     {
-     "nombre": "Purificadores",
-     "venta": 386.0,
-     "lineas": 4,
-     "unidades": 4.0,
-     "casos": 4
+     "nombre": "Accesorios industriales",
+     "venta": 242.9,
+     "lineas": 2,
+     "unidades": 2.0,
+     "casos": 1
     },
     {
      "nombre": "Servicio",
@@ -3064,10 +3093,17 @@
    "productos": [
     {
      "nombre": "Tanque plus+ 1100L GDPV Rotoplas",
-     "venta": 14785.6,
-     "lineas": 16,
-     "unidades": 17.0,
-     "casos": 16
+     "venta": 19135.1,
+     "lineas": 20,
+     "unidades": 22.0,
+     "casos": 20
+    },
+    {
+     "nombre": "TANQUE INDUSTRIAL PARA AGUA 10,000L SIN ACCESORIOS",
+     "venta": 13246.01,
+     "lineas": 1,
+     "unidades": 1.0,
+     "casos": 1
     },
     {
      "nombre": "Tanque industrial de agua 10,000 L sin accesorios",
@@ -3077,11 +3113,25 @@
      "casos": 1
     },
     {
+     "nombre": "Bomba Inteligente 1.2 HP",
+     "venta": 8393.0,
+     "lineas": 7,
+     "unidades": 7.0,
+     "casos": 7
+    },
+    {
      "nombre": "Cisterna de agua de 5,000 litros",
      "venta": 8299.0,
      "lineas": 1,
      "unidades": 1.0,
      "casos": 1
+    },
+    {
+     "nombre": "Tanque plus+ 700L GDVP Rotoplas",
+     "venta": 8140.0,
+     "lineas": 11,
+     "unidades": 11.0,
+     "casos": 11
     },
     {
      "nombre": "Tanque plus+ 2500L GDPV Rotoplas",
@@ -3098,71 +3148,50 @@
      "casos": 1
     },
     {
-     "nombre": "Bomba Inteligente 1.2 HP",
-     "venta": 5995.0,
-     "lineas": 5,
-     "unidades": 5.0,
-     "casos": 5
-    },
-    {
-     "nombre": "Tanque plus+ 700L GDVP Rotoplas",
-     "venta": 5180.0,
-     "lineas": 7,
-     "unidades": 7.0,
-     "casos": 7
-    },
-    {
      "nombre": "Tanque plus+ 1500L GDPV Rotoplas",
-     "venta": 3897.0,
-     "lineas": 3,
-     "unidades": 3.0,
-     "casos": 3
-    },
-    {
-     "nombre": "Bomba Inteligente 1/2 HP",
-     "venta": 2716.0,
-     "lineas": 2,
-     "unidades": 4.0,
-     "casos": 2
-    },
-    {
-     "nombre": "Bomba Inteligente 1/4 HP",
-     "venta": 2236.0,
+     "venta": 5196.0,
      "lineas": 4,
      "unidades": 4.0,
      "casos": 4
     },
     {
-     "nombre": "Cisterna de agua Garantía de por vida* 2000 Litros",
-     "venta": 2209.0,
-     "lineas": 1,
-     "unidades": 1.0,
-     "casos": 1
+     "nombre": "Bomba Inteligente 1/2 HP",
+     "venta": 4753.0,
+     "lineas": 5,
+     "unidades": 7.0,
+     "casos": 5
     },
     {
-     "nombre": "Tanque Arena 1,100 Lt + Cisterna 1,200 Lt",
-     "venta": 2025.0,
-     "lineas": 1,
-     "unidades": 1.0,
-     "casos": 1
-    },
-    {
-     "nombre": "Terma GAS CONFORT MAX 20L GNTF",
-     "venta": 1799.0,
-     "lineas": 1,
-     "unidades": 1.0,
-     "casos": 1
+     "nombre": "Bomba Inteligente 1/4 HP",
+     "venta": 3823.56,
+     "lineas": 6,
+     "unidades": 7.0,
+     "casos": 6
     },
     {
      "nombre": "Tanque plus+ 2500L GDPV Rotoplas Tanque plus",
-     "venta": 1589.0,
-     "lineas": 1,
-     "unidades": 1.0,
-     "casos": 1
+     "venta": 3178.0,
+     "lineas": 2,
+     "unidades": 2.0,
+     "casos": 2
     },
     {
      "nombre": "Biodigestor Autolimpiable 1300 Litros",
-     "venta": 1539.0,
+     "venta": 3078.0,
+     "lineas": 2,
+     "unidades": 2.0,
+     "casos": 2
+    },
+    {
+     "nombre": "Tanque plus+ 2500L SMA Rotoplas",
+     "venta": 2800.0,
+     "lineas": 1,
+     "unidades": 2.0,
+     "casos": 1
+    },
+    {
+     "nombre": "Cisterna de agua Garantía de por vida* 2000 Litros",
+     "venta": 2209.0,
      "lineas": 1,
      "unidades": 1.0,
      "casos": 1
@@ -3171,10 +3200,10 @@
    "provincias": [
     {
      "nombre": "Lima",
-     "venta": 77158.45,
-     "lineas": 60,
-     "unidades": 64.0,
-     "casos": 50
+     "venta": 112423.42,
+     "lineas": 88,
+     "unidades": 98.0,
+     "casos": 75
     },
     {
      "nombre": "Huanuco",
@@ -3184,15 +3213,15 @@
      "casos": 1
     },
     {
-     "nombre": "Cusco",
-     "venta": 1199.0,
-     "lineas": 1,
-     "unidades": 1.0,
-     "casos": 1
+     "nombre": "Callao",
+     "venta": 3017.9,
+     "lineas": 3,
+     "unidades": 3.0,
+     "casos": 3
     },
     {
-     "nombre": "Callao",
-     "venta": 869.9,
+     "nombre": "Cusco",
+     "venta": 1199.0,
      "lineas": 1,
      "unidades": 1.0,
      "casos": 1
@@ -3219,6 +3248,13 @@
      "casos": 1
     },
     {
+     "nombre": "Ilo",
+     "venta": 559.0,
+     "lineas": 1,
+     "unidades": 1.0,
+     "casos": 1
+    },
+    {
      "nombre": "Comas",
      "venta": 299.0,
      "lineas": 1,
@@ -3229,55 +3265,55 @@
    "origen": [
     {
      "nombre": "Whatsapp entrante",
-     "venta": 83394.25,
-     "lineas": 67,
-     "unidades": 71.0,
-     "casos": 56
+     "venta": 120687.22,
+     "lineas": 97,
+     "unidades": 107.0,
+     "casos": 83
     },
     {
      "nombre": "Llamada entrante",
-     "venta": 1638.0,
-     "lineas": 2,
-     "unidades": 2.0,
-     "casos": 2
+     "venta": 2317.0,
+     "lineas": 3,
+     "unidades": 3.0,
+     "casos": 3
     }
    ],
    "pago": [
     {
      "nombre": "Pagina web",
-     "venta": 59164.25,
-     "lineas": 60,
-     "unidades": 64.0,
-     "casos": 55
+     "venta": 83647.31,
+     "lineas": 88,
+     "unidades": 98.0,
+     "casos": 82
     },
     {
      "nombre": "Transferencia",
-     "venta": 25868.0,
-     "lineas": 9,
-     "unidades": 9.0,
-     "casos": 3
+     "venta": 39356.91,
+     "lineas": 12,
+     "unidades": 12.0,
+     "casos": 4
     }
    ],
    "tramos_ticket": [
     {
      "tramo": "< 500",
-     "casos": 7,
-     "venta": 833.0
+     "casos": 13,
+     "venta": 2280.0
     },
     {
      "tramo": "500–1.000",
-     "casos": 31,
-     "venta": 24109.25
+     "casos": 45,
+     "venta": 34751.95
     },
     {
      "tramo": "1.000–2.000",
-     "casos": 13,
-     "venta": 18587.8
+     "casos": 18,
+     "venta": 25393.16
     },
     {
      "tramo": "2.000–5.000",
-     "casos": 5,
-     "venta": 11897.0
+     "casos": 7,
+     "venta": 17485.0
     },
     {
      "tramo": "5.000–10.000",
@@ -3286,8 +3322,8 @@
     },
     {
      "tramo": "> 10.000",
-     "casos": 1,
-     "venta": 23110.0
+     "casos": 2,
+     "venta": 36598.91
     }
    ],
    "ventas_grandes": [
@@ -3297,6 +3333,13 @@
      "provincia": "Lima",
      "asesor": "Jair",
      "familia": "Tanque"
+    },
+    {
+     "caso": "26418",
+     "venta": 13488.91,
+     "provincia": "Lima",
+     "asesor": "Facundo",
+     "familia": "Tanque industrial"
     },
     {
      "caso": "26309",
@@ -3313,6 +3356,20 @@
      "familia": "Tanque"
     },
     {
+     "caso": "27014",
+     "venta": 2800.0,
+     "provincia": "Lima",
+     "asesor": "Jair",
+     "familia": "Tanque"
+    },
+    {
+     "caso": "27784",
+     "venta": 2788.0,
+     "provincia": "Lima",
+     "asesor": "Facundo",
+     "familia": "Tanque"
+    },
+    {
      "caso": "26799",
      "venta": 2498.0,
      "provincia": "Lima",
@@ -3325,27 +3382,6 @@
      "provincia": "Lima",
      "asesor": "Jair",
      "familia": "Tanque/cisterna"
-    },
-    {
-     "caso": "20469",
-     "venta": 2037.0,
-     "provincia": "Lima",
-     "asesor": "Alberto",
-     "familia": "Bombas"
-    },
-    {
-     "caso": "26464",
-     "venta": 2025.0,
-     "provincia": "Lima",
-     "asesor": "Alberto",
-     "familia": "Tanque"
-    },
-    {
-     "caso": "26292",
-     "venta": 1799.0,
-     "provincia": "Lima",
-     "asesor": "Facundo",
-     "familia": "Termas"
     }
    ]
   }
@@ -3426,7 +3462,7 @@
    "conversion_real": null,
    "tablero_gestionados": 0.0,
    "tablero_contactados": 0.0,
-   "tablero_convertidos": 69.0
+   "tablero_convertidos": 100.0
   },
   {
    "periodo": "sin-fecha",
@@ -3458,119 +3494,119 @@
     "asesor": "Alberto",
     "importe": 214082.76,
     "ultimo_contacto": "2026-09-08",
-    "dias_sin_contacto": 59
+    "dias_sin_contacto": 63
    },
    {
     "caso": "15507",
     "asesor": "Jair",
     "importe": 173784.0,
     "ultimo_contacto": "2026-10-02",
-    "dias_sin_contacto": 35
+    "dias_sin_contacto": 39
    },
    {
     "caso": "21754",
     "asesor": "Nati",
     "importe": 173170.0,
     "ultimo_contacto": "2026-10-14",
-    "dias_sin_contacto": 23
+    "dias_sin_contacto": 27
    },
    {
     "caso": "14586",
     "asesor": "Jair",
     "importe": 170000.0,
     "ultimo_contacto": "2026-09-22",
-    "dias_sin_contacto": 45
+    "dias_sin_contacto": 49
    },
    {
     "caso": "15513",
     "asesor": "Jair",
     "importe": 107683.08,
     "ultimo_contacto": "2026-09-15",
-    "dias_sin_contacto": 52
+    "dias_sin_contacto": 56
    },
    {
     "caso": "16293",
     "asesor": "Jair",
     "importe": 63417.0,
     "ultimo_contacto": "2026-09-12",
-    "dias_sin_contacto": 55
+    "dias_sin_contacto": 59
    },
    {
     "caso": "16860",
     "asesor": "Nati",
     "importe": 56999.5,
     "ultimo_contacto": "2026-09-15",
-    "dias_sin_contacto": 52
+    "dias_sin_contacto": 56
    },
    {
     "caso": "16613",
     "asesor": "Alberto",
     "importe": 48986.8,
     "ultimo_contacto": "2026-09-14",
-    "dias_sin_contacto": 53
+    "dias_sin_contacto": 57
    },
    {
     "caso": "14284",
     "asesor": "Jair",
     "importe": 45041.36,
     "ultimo_contacto": "2026-10-15",
-    "dias_sin_contacto": 22
+    "dias_sin_contacto": 26
    },
    {
     "caso": "16126",
     "asesor": "Alberto",
     "importe": 37025.0,
     "ultimo_contacto": "2026-09-11",
-    "dias_sin_contacto": 56
+    "dias_sin_contacto": 60
    },
    {
     "caso": "16151",
     "asesor": "Nati",
     "importe": 35894.0,
     "ultimo_contacto": "2026-09-11",
-    "dias_sin_contacto": 56
+    "dias_sin_contacto": 60
    },
    {
     "caso": "15763",
     "asesor": "Jair",
     "importe": 32108.0,
     "ultimo_contacto": "2026-09-22",
-    "dias_sin_contacto": 45
+    "dias_sin_contacto": 49
    },
    {
     "caso": "16820",
     "asesor": "Jair",
     "importe": 30322.0,
     "ultimo_contacto": "2026-09-22",
-    "dias_sin_contacto": 45
+    "dias_sin_contacto": 49
    },
    {
     "caso": "15538",
     "asesor": "Alberto",
     "importe": 22722.0,
     "ultimo_contacto": "2026-09-09",
-    "dias_sin_contacto": 58
+    "dias_sin_contacto": 62
    },
    {
     "caso": "14219",
     "asesor": "Jair",
     "importe": 13312.42,
     "ultimo_contacto": "2026-09-10",
-    "dias_sin_contacto": 57
+    "dias_sin_contacto": 61
    },
    {
     "caso": "15542",
     "asesor": "Jair",
     "importe": 12166.9,
     "ultimo_contacto": "2026-09-15",
-    "dias_sin_contacto": 52
+    "dias_sin_contacto": 56
    },
    {
     "caso": "15163",
     "asesor": "Jair",
     "importe": 7966.31,
     "ultimo_contacto": "2026-09-10",
-    "dias_sin_contacto": 57
+    "dias_sin_contacto": 61
    }
   ]
  },
@@ -3579,7 +3615,7 @@
   "lineas_total_distinto_cant_x_precio": 9,
   "monto_diferencia_total": 7014.86,
   "lineas_periodo_distinto_fecha": 0,
-  "lineas_familia_otros": 80,
+  "lineas_familia_otros": 83,
   "leads_sin_periodo_valido": 434
  }
 }
