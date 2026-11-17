@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-17T09:02-05:00",
+ "actualizado": "2026-11-17T09:09-05:00",
  "datos_hasta": "2026-11-16",
  "moneda": "PEN",
  "acumulado": {
@@ -3460,7 +3460,7 @@
   },
   {
    "periodo": "2026-07",
-   "gestionados": 716,
+   "gestionados": 682,
    "contactados": 509,
    "vendidos": 8,
    "sin_periodo": 0,
@@ -3471,10 +3471,10 @@
   },
   {
    "periodo": "2026-08",
-   "gestionados": 552,
+   "gestionados": 546,
    "contactados": 544,
    "vendidos": 2,
-   "sin_periodo": 6,
+   "sin_periodo": 0,
    "conversion_real": 0.0037,
    "tablero_gestionados": 546.0,
    "tablero_contactados": 544.0,
@@ -3482,10 +3482,10 @@
   },
   {
    "periodo": "2026-09",
-   "gestionados": 718,
+   "gestionados": 717,
    "contactados": 345,
    "vendidos": 2,
-   "sin_periodo": 1,
+   "sin_periodo": 0,
    "conversion_real": 0.0058,
    "tablero_gestionados": 508.0,
    "tablero_contactados": 473.0,
@@ -3494,10 +3494,10 @@
   {
    "periodo": "2026-10",
    "gestionados": 868,
-   "contactados": 114,
+   "contactados": 121,
    "vendidos": 3,
    "sin_periodo": 373,
-   "conversion_real": 0.0263,
+   "conversion_real": 0.0248,
    "tablero_gestionados": 0.0,
    "tablero_contactados": 0.0,
    "tablero_convertidos": 306.0
@@ -3721,12 +3721,12 @@
   },
   {
    "periodo": "2026-07",
-   "leads": 716,
+   "leads": 682,
    "gestionados": 677,
    "efectivos": 485,
    "vendidos": 8,
-   "compraron": 38,
-   "venta_cruce": 125086.56,
+   "compraron": 5,
+   "venta_cruce": 1490.3,
    "por_tipo": [
     {
      "nombre": "Atendió y no le interesa",
@@ -3758,10 +3758,10 @@
     },
     {
      "nombre": "Sin gestionar",
-     "leads": 39,
+     "leads": 5,
      "efectivos": 0,
      "vendidos": 0,
-     "compraron": 33
+     "compraron": 0
     },
     {
      "nombre": "Otros",
@@ -3778,13 +3778,6 @@
      "efectivos": 469,
      "vendidos": 8,
      "compraron": 5
-    },
-    {
-     "nombre": "Recompra",
-     "leads": 34,
-     "efectivos": 0,
-     "vendidos": 0,
-     "compraron": 33
     },
     {
      "nombre": "Google · Mix",
@@ -3818,10 +3811,10 @@
     },
     {
      "nombre": "Jair",
-     "leads": 318,
+     "leads": 300,
      "efectivos": 205,
      "vendidos": 2,
-     "compraron": 19
+     "compraron": 2
     },
     {
      "nombre": "Jean",
@@ -3829,13 +3822,6 @@
      "efectivos": 37,
      "vendidos": 0,
      "compraron": 1
-    },
-    {
-     "nombre": "Alberto",
-     "leads": 16,
-     "efectivos": 0,
-     "vendidos": 0,
-     "compraron": 16
     },
     {
      "nombre": "Sin asesor",
@@ -3848,27 +3834,27 @@
    "calidad": {
     "sin_numero": 0,
     "numero_invalido": 0,
-    "numero_repetido": 79,
+    "numero_repetido": 77,
     "sin_origen": 1,
     "sin_asesor": 5,
-    "sin_resolucion": 39,
-    "vendio_vacio": 50,
+    "sin_resolucion": 5,
+    "vendio_vacio": 16,
     "sin_interes": 682,
     "fecha_texto": 0,
     "periodo_con_error": 0,
     "vendido_sin_caso": 7,
-    "compro_sin_marcar": 37,
+    "compro_sin_marcar": 4,
     "marcado_sin_compra": 7
    }
   },
   {
    "periodo": "2026-08",
-   "leads": 552,
+   "leads": 546,
    "gestionados": 546,
    "efectivos": 120,
    "vendidos": 2,
-   "compraron": 8,
-   "venta_cruce": 60971.08,
+   "compraron": 2,
+   "venta_cruce": 35594.02,
    "por_tipo": [
     {
      "nombre": "Habló por llamada",
@@ -3911,13 +3897,6 @@
      "efectivos": 0,
      "vendidos": 0,
      "compraron": 0
-    },
-    {
-     "nombre": "Sin gestionar",
-     "leads": 6,
-     "efectivos": 0,
-     "vendidos": 0,
-     "compraron": 6
     }
    ],
    "por_origen": [
@@ -3943,13 +3922,6 @@
      "compraron": 0
     },
     {
-     "nombre": "Recompra",
-     "leads": 6,
-     "efectivos": 0,
-     "vendidos": 0,
-     "compraron": 6
-    },
-    {
      "nombre": "Google · Agroindustria",
      "leads": 4,
      "efectivos": 4,
@@ -3960,14 +3932,21 @@
    "por_asesor": [
     {
      "nombre": "Jair",
-     "leads": 280,
+     "leads": 278,
      "efectivos": 78,
      "vendidos": 2,
-     "compraron": 8
+     "compraron": 2
     },
     {
      "nombre": "Sin asesor",
-     "leads": 206,
+     "leads": 141,
+     "efectivos": 0,
+     "vendidos": 0,
+     "compraron": 0
+    },
+    {
+     "nombre": "Alberto",
+     "leads": 61,
      "efectivos": 0,
      "vendidos": 0,
      "compraron": 0
@@ -4006,25 +3985,25 @@
     "numero_invalido": 1,
     "numero_repetido": 7,
     "sin_origen": 0,
-    "sin_asesor": 206,
-    "sin_resolucion": 6,
-    "vendio_vacio": 418,
+    "sin_asesor": 141,
+    "sin_resolucion": 0,
+    "vendio_vacio": 412,
     "sin_interes": 398,
     "fecha_texto": 100,
-    "periodo_con_error": 6,
+    "periodo_con_error": 0,
     "vendido_sin_caso": 0,
-    "compro_sin_marcar": 6,
+    "compro_sin_marcar": 0,
     "marcado_sin_compra": 0
    }
   },
   {
    "periodo": "2026-09",
-   "leads": 718,
+   "leads": 717,
    "gestionados": 701,
    "efectivos": 179,
    "vendidos": 2,
-   "compraron": 3,
-   "venta_cruce": 5605.1,
+   "compraron": 2,
+   "venta_cruce": 4656.2,
    "por_tipo": [
     {
      "nombre": "Habló por llamada",
@@ -4070,10 +4049,10 @@
     },
     {
      "nombre": "Sin gestionar",
-     "leads": 17,
+     "leads": 16,
      "efectivos": 0,
      "vendidos": 0,
-     "compraron": 1
+     "compraron": 0
     },
     {
      "nombre": "Otros",
@@ -4118,13 +4097,6 @@
      "efectivos": 0,
      "vendidos": 0,
      "compraron": 0
-    },
-    {
-     "nombre": "Recompra",
-     "leads": 1,
-     "efectivos": 0,
-     "vendidos": 0,
-     "compraron": 1
     }
    ],
    "por_asesor": [
@@ -4137,10 +4109,10 @@
     },
     {
      "nombre": "Jair",
-     "leads": 247,
+     "leads": 246,
      "efectivos": 78,
      "vendidos": 1,
-     "compraron": 1
+     "compraron": 0
     },
     {
      "nombre": "Sin asesor",
@@ -4184,29 +4156,29 @@
     "numero_repetido": 13,
     "sin_origen": 0,
     "sin_asesor": 111,
-    "sin_resolucion": 17,
-    "vendio_vacio": 44,
+    "sin_resolucion": 16,
+    "vendio_vacio": 43,
     "sin_interes": 46,
     "fecha_texto": 0,
-    "periodo_con_error": 1,
+    "periodo_con_error": 0,
     "vendido_sin_caso": 0,
-    "compro_sin_marcar": 2,
+    "compro_sin_marcar": 1,
     "marcado_sin_compra": 1
    }
   },
   {
    "periodo": "2026-10",
    "leads": 868,
-   "gestionados": 673,
-   "efectivos": 114,
+   "gestionados": 855,
+   "efectivos": 121,
    "vendidos": 3,
    "compraron": 5,
    "venta_cruce": 42312.53,
    "por_tipo": [
     {
      "nombre": "Habló por llamada",
-     "leads": 108,
-     "efectivos": 108,
+     "leads": 115,
+     "efectivos": 115,
      "vendidos": 2,
      "compraron": 2
     },
@@ -4226,17 +4198,17 @@
     },
     {
      "nombre": "No contesta",
-     "leads": 556,
+     "leads": 731,
      "efectivos": 0,
      "vendidos": 1,
-     "compraron": 1
+     "compraron": 3
     },
     {
      "nombre": "Sin gestionar",
-     "leads": 195,
+     "leads": 13,
      "efectivos": 0,
      "vendidos": 0,
-     "compraron": 2
+     "compraron": 0
     },
     {
      "nombre": "Duplicado",
@@ -4250,7 +4222,7 @@
     {
      "nombre": "Medialabs · Termas",
      "leads": 729,
-     "efectivos": 92,
+     "efectivos": 96,
      "vendidos": 2,
      "compraron": 1
     },
@@ -4264,7 +4236,7 @@
     {
      "nombre": "Google · Agroindustria",
      "leads": 37,
-     "efectivos": 7,
+     "efectivos": 10,
      "vendidos": 0,
      "compraron": 1
     },
@@ -4287,7 +4259,7 @@
     {
      "nombre": "Jair",
      "leads": 414,
-     "efectivos": 61,
+     "efectivos": 68,
      "vendidos": 1,
      "compraron": 1
     },
@@ -4312,7 +4284,7 @@
     "numero_repetido": 45,
     "sin_origen": 0,
     "sin_asesor": 0,
-    "sin_resolucion": 195,
+    "sin_resolucion": 13,
     "vendio_vacio": 196,
     "sin_interes": 0,
     "fecha_texto": 0,
@@ -4325,7 +4297,7 @@
   {
    "periodo": "2026-11",
    "leads": 250,
-   "gestionados": 6,
+   "gestionados": 8,
    "efectivos": 2,
    "vendidos": 0,
    "compraron": 3,
@@ -4340,14 +4312,14 @@
     },
     {
      "nombre": "No contesta",
-     "leads": 4,
+     "leads": 6,
      "efectivos": 0,
      "vendidos": 0,
      "compraron": 0
     },
     {
      "nombre": "Sin gestionar",
-     "leads": 244,
+     "leads": 242,
      "efectivos": 0,
      "vendidos": 0,
      "compraron": 3
@@ -4378,29 +4350,22 @@
    ],
    "por_asesor": [
     {
-     "nombre": "Sin asesor",
-     "leads": 131,
-     "efectivos": 0,
-     "vendidos": 0,
-     "compraron": 1
-    },
-    {
      "nombre": "Alberto",
-     "leads": 40,
+     "leads": 94,
      "efectivos": 0,
      "vendidos": 0,
      "compraron": 0
     },
     {
      "nombre": "Facundo",
-     "leads": 40,
+     "leads": 85,
      "efectivos": 2,
      "vendidos": 0,
-     "compraron": 2
+     "compraron": 3
     },
     {
      "nombre": "Jair",
-     "leads": 39,
+     "leads": 71,
      "efectivos": 0,
      "vendidos": 0,
      "compraron": 0
@@ -4411,8 +4376,8 @@
     "numero_invalido": 0,
     "numero_repetido": 8,
     "sin_origen": 0,
-    "sin_asesor": 131,
-    "sin_resolucion": 244,
+    "sin_asesor": 0,
+    "sin_resolucion": 242,
     "vendio_vacio": 248,
     "sin_interes": 0,
     "fecha_texto": 0,
@@ -4642,6 +4607,6 @@
   "monto_diferencia_total": 7014.86,
   "lineas_periodo_distinto_fecha": 0,
   "lineas_familia_otros": 115,
-  "leads_sin_periodo_valido": 657
+  "leads_sin_periodo_valido": 650
  }
 }
