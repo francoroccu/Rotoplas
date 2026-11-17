@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-17T09:09-05:00",
+ "actualizado": "2026-11-17T09:29-05:00",
  "datos_hasta": "2026-11-16",
  "moneda": "PEN",
  "acumulado": {
@@ -176,49 +176,56 @@
      "venta": 80783.77,
      "lineas": 38,
      "unidades": 54.0,
-     "casos": 31
+     "casos": 31,
+     "meta": 150000.0
     },
     {
      "nombre": "Jair",
      "venta": 78326.37,
      "lineas": 61,
      "unidades": 75.0,
-     "casos": 31
+     "casos": 31,
+     "meta": 150000.0
     },
     {
      "nombre": "Jean",
      "venta": 47450.23,
      "lineas": 60,
      "unidades": 65.0,
-     "casos": 38
+     "casos": 38,
+     "meta": 150000.0
     },
     {
      "nombre": "Jeremy",
      "venta": 16564.67,
      "lineas": 8,
      "unidades": 8.0,
-     "casos": 2
+     "casos": 2,
+     "meta": null
     },
     {
      "nombre": "Sandra",
      "venta": 4966.4,
      "lineas": 3,
      "unidades": 5.0,
-     "casos": 1
+     "casos": 1,
+     "meta": null
     },
     {
      "nombre": "Carolina",
      "venta": 1810.9,
      "lineas": 4,
      "unidades": 5.0,
-     "casos": 4
+     "casos": 4,
+     "meta": null
     },
     {
      "nombre": "Alberto",
      "venta": 267.0,
      "lineas": 1,
      "unidades": 3.0,
-     "casos": 1
+     "casos": 1,
+     "meta": null
     }
    ],
    "familias": [
@@ -777,21 +784,24 @@
      "venta": 125380.09,
      "lineas": 84,
      "unidades": 137.0,
-     "casos": 59
+     "casos": 59,
+     "meta": 150000.0
     },
     {
      "nombre": "Jonathan",
      "venta": 123978.21,
      "lineas": 97,
      "unidades": 122.0,
-     "casos": 55
+     "casos": 55,
+     "meta": 150000.0
     },
     {
      "nombre": "Jean",
      "venta": 35298.41,
      "lineas": 65,
      "unidades": 109.0,
-     "casos": 49
+     "casos": 49,
+     "meta": 150000.0
     }
    ],
    "familias": [
@@ -1350,21 +1360,24 @@
      "venta": 239895.89,
      "lineas": 53,
      "unidades": 87.0,
-     "casos": 41
+     "casos": 41,
+     "meta": 150000.0
     },
     {
      "nombre": "Jonathan",
      "venta": 32794.75,
      "lineas": 38,
      "unidades": 44.0,
-     "casos": 31
+     "casos": 31,
+     "meta": 150000.0
     },
     {
      "nombre": "Jean",
      "venta": 13776.76,
      "lineas": 28,
      "unidades": 43.0,
-     "casos": 22
+     "casos": 22,
+     "meta": 150000.0
     }
    ],
    "familias": [
@@ -1877,35 +1890,40 @@
      "venta": 210047.92,
      "lineas": 57,
      "unidades": 78.0,
-     "casos": 35
+     "casos": 35,
+     "meta": 125128.33
     },
     {
      "nombre": "Jair",
      "venta": 112096.61,
      "lineas": 89,
      "unidades": 103.0,
-     "casos": 76
+     "casos": 76,
+     "meta": 125128.33
     },
     {
      "nombre": "Jorge",
      "venta": 51893.76,
      "lineas": 30,
      "unidades": 33.0,
-     "casos": 25
+     "casos": 25,
+     "meta": 125128.33
     },
     {
      "nombre": "Nati",
      "venta": 11258.4,
      "lineas": 14,
      "unidades": 22.0,
-     "casos": 12
+     "casos": 12,
+     "meta": null
     },
     {
      "nombre": "Leti",
      "venta": 1725.0,
      "lineas": 4,
      "unidades": 5.0,
-     "casos": 4
+     "casos": 4,
+     "meta": null
     }
    ],
    "familias": [
@@ -2495,21 +2513,24 @@
      "venta": 189538.07,
      "lineas": 166,
      "unidades": 202.0,
-     "casos": 127
+     "casos": 127,
+     "meta": 125128.33
     },
     {
      "nombre": "Alberto",
      "venta": 176057.38,
      "lineas": 129,
      "unidades": 195.0,
-     "casos": 94
+     "casos": 94,
+     "meta": 125128.33
     },
     {
      "nombre": "Nati",
      "venta": 6769.0,
      "lineas": 16,
      "unidades": 18.0,
-     "casos": 12
+     "casos": 12,
+     "meta": 125128.33
     }
    ],
    "familias": [
@@ -3022,21 +3043,24 @@
      "venta": 139883.12,
      "lineas": 73,
      "unidades": 77.0,
-     "casos": 50
+     "casos": 50,
+     "meta": 181824.0
     },
     {
      "nombre": "Alberto",
      "venta": 71868.48,
      "lineas": 57,
      "unidades": 80.0,
-     "casos": 42
+     "casos": 42,
+     "meta": 181824.0
     },
     {
      "nombre": "Facundo",
      "venta": 54344.01,
      "lineas": 77,
      "unidades": 87.0,
-     "casos": 63
+     "casos": 63,
+     "meta": 181824.0
     }
    ],
    "familias": [

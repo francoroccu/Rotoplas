@@ -130,7 +130,7 @@ footer .in{padding-block:20px;display:flex;justify-content:space-between;gap:12p
   </div>
 
   <span class="sec-label">Equipo</span>
-  <div class="card scroll"><table id="tAse"></table></div>
+  <div class="card scroll"><table id="tAse"></table><p class="note" id="aseNote"></p></div>
 
   <span class="sec-label">Producto</span>
   <div class="grid c2">
@@ -322,9 +322,17 @@ footer .in{padding-block:20px;display:flex;justify-content:space-between;gap:12p
       mk('chSem',{type:'bar',data:{labels:ms.map(short),datasets:[1,2,3,4].map((w,k)=>({label:'Semana '+w,data:ms.map(m=>(m.semanas.find(s=>s.semana===w)||{venta:0}).venta),backgroundColor:['#93c5fd','#60a5fa','#2563eb','#1e3a8a'][k],borderRadius:3}))},options:{maintainAspectRatio:false,plugins:{legend:{position:'bottom'},tooltip:{callbacks:{label:c=>c.dataset.label+': '+S(c.raw)}}},scales:yK}});
     }
 
-    // Asesores
-    const ases=merge(ms,'asesores');
-    $('tAse').innerHTML='<thead><tr><th>Asesor</th><th class="r">Venta</th><th class="r">% del período</th><th class="r">Casos</th><th class="r">Unidades</th><th class="r">Ticket</th></tr></thead><tbody>'+ases.map(a=>`<tr><td>${esc(a.nombre)}</td><td class="r">${S(a.venta)}</td><td class="r">${P(a.venta/venta)}</td><td class="r">${a.casos}</td><td class="r">${Math.round(a.unidades)}</td><td class="r">${S(a.venta/(a.casos||1))}</td></tr>`).join('')+`<tr class="tot"><td>Total</td><td class="r">${S(venta)}</td><td class="r">100%</td><td class="r">${casos}</td><td class="r">${Math.round(uni)}</td><td class="r">${S(venta/casos)}</td></tr></tbody>`;
+    // Asesores: venta vs meta individual (BLOQUE 2 de cada pestaña Detalle <mes>)
+    const ag={};ms.forEach(m=>m.asesores.forEach(x=>{const o=ag[x.nombre]||(ag[x.nombre]={nombre:x.nombre,venta:0,casos:0,unidades:0,meta:0,vMeta:0});o.venta+=x.venta;o.casos+=x.casos;o.unidades+=x.unidades;if(x.meta){o.meta+=x.meta;o.vMeta+=x.venta;}}));
+    const ases=Object.values(ag).sort((a,b)=>b.venta-a.venta);
+    const metaT=ases.reduce((a,x)=>a+x.meta,0), vMetaT=ases.reduce((a,x)=>a+x.vMeta,0);
+    const est=c=>c==null?'<span class="note">sin meta</span>':`<span class="pill ${c>=1?'ok':c>=.8?'warn':'bad'}">${P(c)} · ${c>=1?'Cumplida':c>=.8?'En camino':'Debajo'}</span>`;
+    $('tAse').innerHTML='<thead><tr><th>Asesor</th><th class="r">Meta</th><th class="r">Venta</th><th class="r">% cumplimiento</th><th class="r">% de la venta</th><th class="r">Casos</th><th class="r">Unidades</th><th class="r">Ticket</th></tr></thead><tbody>'
+      +ases.map(a=>`<tr><td>${esc(a.nombre)}</td><td class="r">${a.meta?S(a.meta):'—'}</td><td class="r">${S(a.venta)}</td><td class="r">${est(a.meta?a.vMeta/a.meta:null)}</td><td class="r">${P(a.venta/venta)}</td><td class="r">${a.casos}</td><td class="r">${Math.round(a.unidades)}</td><td class="r">${a.casos?S(a.venta/a.casos):'—'}</td></tr>`).join('')
+      +`<tr class="tot"><td>Total</td><td class="r">${metaT?S(metaT):'—'}</td><td class="r">${S(venta)}</td><td class="r">${metaT?P(vMetaT/metaT):'—'}</td><td class="r">100%</td><td class="r">${casos}</td><td class="r">${Math.round(uni)}</td><td class="r">${S(venta/casos)}</td></tr></tbody>`;
+    {const per=d.datos_hasta.slice(0,7);let txt='Meta individual según el bloque «Ventas por operador» de cada pestaña Detalle del mes en la planilla. Estado como en la planilla: cumplida desde 100%, en camino desde 80%. «% de la venta» = parte de la venta del período que hizo cada asesor.';
+      if(ms.some(m=>m.periodo===per)){const y=+per.slice(0,4),mo=+per.slice(5,7),N=+d.datos_hasta.slice(8),nd=new Date(y,mo,0).getDate();let t=0,e=0;for(let k=1;k<=nd;k++)if(new Date(y,mo-1,k).getDay()!==0){t++;if(k<=N)e++;}txt+=` ${short(M.at(-1))} está en curso: al día ${N} el ritmo parejo es ${P(e/t)} de la meta (${e} de ${t} días hábiles).`;}
+      $('aseNote').textContent=txt;}
 
     // Producto
     const fam=merge(ms,'familias');

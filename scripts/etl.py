@@ -125,6 +125,33 @@ def objetivos(wb):
     return out
 
 
+def metas_asesor(wb):
+    """Meta de venta por asesor y mes, del «BLOQUE 2 — VENTAS POR OPERADOR» de cada pestaña Detalle <mes>."""
+    out = {}
+    for ws in wb.worksheets:
+        if not ws.title.startswith("Detalle") or ws.title == "Detalle de Ventas":
+            continue
+        per, en_bloque, metas = None, False, {}
+        for r in ws.iter_rows(min_row=1, max_row=60, values_only=True):
+            r = tuple(r) + (None,) * 3
+            if norm(r[0]) == "PERIODO ACTIVO →".replace("→", "").strip() or str(r[0] or "").startswith("Período activo"):
+                f = to_date(r[1])
+                per = f"{f.year}-{f.month:02d}" if f else None
+            if "VENTAS POR OPERADOR" in norm(r[0]):
+                en_bloque = True
+                continue
+            if en_bloque:
+                if norm(r[0]) in ("OPERADOR", ""):
+                    continue
+                if norm(r[0]) == "TOTAL" or "BLOQUE" in norm(r[0]):
+                    break
+                if isinstance(r[1], (int, float)) and r[1] > 0:
+                    metas[place(r[0])] = round(float(r[1]), 2)
+        if per and metas and per not in out:
+            out[per] = metas
+    return out
+
+
 def ventas(wb):
     ws = wb["Detalle de Ventas"]
     h, c = header_row(ws, ["FECHA", "TOTAL", "ES VENTA"])
@@ -336,6 +363,7 @@ def build(wb):
     now = dt.datetime.now(LIMA)
     hoy = now.date()
     obj = objetivos(wb)
+    metas_ase = metas_asesor(wb)
     rows = ventas(wb)
     ventas_ok = [r for r in rows if r["es_venta"]]
 
@@ -399,7 +427,9 @@ def build(wb):
             "semanas": [{"semana": s["nombre"], "venta": s["venta"], "casos": s["casos"]}
                         for s in sorted(group(lambda r: int(r["semana"] or 0)), key=lambda x: x["nombre"])],
             "dias": [{"fecha": d.isoformat(), "venta": round(v[0], 2), "casos": len(v[1])} for d, v in sorted(dias.items())],
-            "asesores": group(lambda r: r["asesor"]),
+            "asesores": [{**a, "meta": metas_ase.get(p, {}).get(a["nombre"])} for a in group(lambda r: r["asesor"])]
+                        + [{"nombre": n, "venta": 0.0, "lineas": 0, "unidades": 0.0, "casos": 0, "meta": v}
+                           for n, v in metas_ase.get(p, {}).items() if n not in {r["asesor"] for r in rs}],
             "familias": group(lambda r: title(r["familia"])),
             "productos": group(lambda r: r["producto"] or "Sin dato")[:15],
             "provincias": group(lambda r: r["provincia"])[:10],
