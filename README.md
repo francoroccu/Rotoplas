@@ -37,5 +37,9 @@ python -m http.server -d public 8000
 
 - **Venta**: líneas de *Detalle de Ventas* con `ES VENTA = 1`, agrupadas por `PERÍODO` y `SEMANA`.
 - **Objetivo**: fila «Venta Objetivo (S/)» del *Evolutivo Mensual*.
-- **Leads reales**: *Base de Leads*; contactado = resolución distinta de no contesta, casilla, apagado, duplicado o equivocado; vendido = `¿VENDIÓ? = SÍ`.
+- **Leads** (pestaña *Leads*, `leads_detalle`): *Base de Leads*, mes según `FECHA` (también si está cargada como texto dd/mm/aaaa).
+  - Tipo de contacto según `RESOLUCIÓN`: habló por llamada (contesta, agendado, venta concretada), atendió y no le interesa (no desea, corta), ya compró, WhatsApp 1 a 1, campaña WhatsApp masiva, no contesta, sin gestionar, otros, duplicado.
+  - Contacto efectivo = las cuatro primeras. Vendieron por gestión = `¿VENDIÓ? = SÍ` sin contar «Ya compró».
+  - Compraron (cruce) = el celular del lead aparece en *Detalle de Ventas* desde la fecha del lead (el teléfono se usa solo para el cruce y no se publica).
+  - Calidad: sin resolución, ¿VENDIÓ? vacío, número repetido o inválido, interés vacío, PERÍODO con error, fecha en texto, ventas no marcadas y marcadas sin venta.
 - **Cotizaciones**: *Seguimiento Cotizaciones*; días sin contacto desde la última llamada.

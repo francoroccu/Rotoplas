@@ -57,7 +57,22 @@ def to_date(v):
         return v.date()
     if isinstance(v, dt.date):
         return v
+    if isinstance(v, str):
+        m = re.match(r"\s*(\d{1,2})/(\d{1,2})/(\d{4})\s*$", v)
+        if m:
+            try:
+                return dt.date(int(m.group(3)), int(m.group(2)), int(m.group(1)))
+            except ValueError:
+                return None
     return None
+
+
+def tel(v):
+    """Últimos 9 dígitos de un celular peruano; None si falta o no es válido. Solo para cruces internos."""
+    if v is None or v == "":
+        return None
+    d = re.sub(r"\D", "", str(int(v)) if isinstance(v, float) else str(v))
+    return d[-9:] if len(d) >= 9 and d[-9] == "9" else "invalido"
 
 
 def title(s):
@@ -136,6 +151,7 @@ def ventas(wb):
             "semana": r[c["SEMANA"]],
             "es_venta": num(r[c["ES VENTA"]]) == 1,
             "caso_unico": num(r[c["CASO UNICO"]]) if "CASO UNICO" in c else None,
+            "tel": tel(r[c["NUMERO"]]) if "NUMERO" in c else None,
         })
     return rows
 
@@ -160,6 +176,128 @@ def leads(wb):
         per = str(r[c["PERIODO"]] or "")
         if not re.match(r"\d{4}-\d{2}$", per):
             out[key]["sin_periodo"] += 1
+    return out
+
+
+# Tipo de contacto según la RESOLUCIÓN cargada por el asesor
+TIPOS = [
+    ("Habló por llamada", ("CONTESTA", "AGENDADO", "VENTA CONCRETADA")),
+    ("Atendió y no le interesa", ("NO DESEA", "CORTA LA LLAMADA")),
+    ("Ya compró", ("YA COMPRO",)),
+    ("WhatsApp 1 a 1", ("WHATSAPP",)),
+    ("Campaña WhatsApp masiva", ("CAMP. WHATSAPP",)),
+    ("No contesta", ("NO CONTESTA LLAMADA", "NO CONTESTA")),
+    ("Otros", ("OTROS",)),
+    ("Duplicado", ("DUPLICADO",)),
+]
+EFECTIVOS = {"Habló por llamada", "Atendió y no le interesa", "Ya compró", "WhatsApp 1 a 1"}
+ORIGENES = {"LEADS MEDIALABS-TERMAS": "Medialabs · Termas", "LEADS-TERMAS&PURIF": "Termas y purificadores",
+            "GOOGLE-MIX": "Google · Mix", "GOOGLE-AGROINDUSTRIA": "Google · Agroindustria",
+            "RECOMPRA": "Recompra", "LEADS FERRETERIAS": "Ferreterías", "LEADS BASE": "Base"}
+
+
+def tipo_contacto(res):
+    r = norm(res)
+    if not r:
+        return "Sin gestionar"
+    for nombre, vals in TIPOS:
+        if r in vals:
+            return nombre
+    return "Otros"
+
+
+def leads_detalle(wb, ventas_rows):
+    """Leads por mes: tipo de contacto, origen, asesor, venta (marcada y cruzada con ventas) y calidad."""
+    ws = wb["Base de Leads"]
+    h, c = header_row(ws, ["FECHA", "RESOLUCION", "VENDIO?"])
+    filas = []
+    for r in ws.iter_rows(min_row=h + 1, values_only=True):
+        raw_f, origen, numero = r[c["FECHA"]], r[c["ORIGEN"]], r[c["NUMERO"]]
+        if raw_f in (None, "") and not origen and numero in (None, "") and not r[c["RESOLUCION"]]:
+            continue  # fila vacía de la plantilla
+        f = to_date(raw_f)
+        filas.append({
+            "fecha": f, "fecha_texto": isinstance(raw_f, str),
+            "periodo": f"{f.year}-{f.month:02d}" if f and 2025 <= f.year <= 2030 else "sin-fecha",
+            "origen": ORIGENES.get(norm(origen), place(origen)) if origen else "Sin origen",
+            "asesor": place(r[c["ASESOR"]]) or "Sin asesor",
+            "tipo": tipo_contacto(r[c["RESOLUCION"]]),
+            "vendio": norm(r[c["VENDIO?"]]),
+            "caso_venta": r[c["N CASO VENTA"]] if "N CASO VENTA" in c else None,
+            "interes": bool(str(r[c["INTERES"]] or "").strip()) if "INTERES" in c else False,
+            "llamado": r[c["LLAMADO"]] if "LLAMADO" in c else None,
+            "tel": tel(numero),
+            "periodo_planilla": str(r[c["PERIODO"]] or ""),
+        })
+
+    # Cruce con ventas por número (interno): un lead "compró" si ese número tiene una venta desde la fecha del lead
+    ventas_tel = defaultdict(list)
+    for v in ventas_rows:
+        if v["es_venta"] and v["tel"] and v["tel"] != "invalido":
+            ventas_tel[v["tel"]].append(v)
+    primer_lead = {}
+    for l in filas:
+        if l["tel"] and l["tel"] != "invalido":
+            fl = l["fecha"] or dt.date(2000, 1, 1)
+            if l["tel"] not in primer_lead or fl < primer_lead[l["tel"]][0]:
+                primer_lead[l["tel"]] = (fl, l["periodo"])
+    venta_cruce = defaultdict(float)
+    for t, (fl, per) in primer_lead.items():
+        venta_cruce[per] += sum(v["total"] for v in ventas_tel.get(t, []) if not v["fecha"] or v["fecha"] >= fl)
+    for l in filas:
+        fl = l["fecha"] or dt.date(2000, 1, 1)
+        l["compro"] = bool(l["tel"] and any(not v["fecha"] or v["fecha"] >= fl for v in ventas_tel.get(l["tel"], [])))
+
+    rep = defaultdict(int)
+    for l in filas:
+        if l["tel"] and l["tel"] != "invalido":
+            rep[l["tel"]] += 1
+
+    out = []
+    for p in sorted({l["periodo"] for l in filas}):
+        ls = [l for l in filas if l["periodo"] == p]
+
+        def grupo(key, orden=None):
+            g = defaultdict(lambda: {"leads": 0, "efectivos": 0, "vendidos": 0, "compraron": 0})
+            for l in ls:
+                k = g[key(l)]
+                k["leads"] += 1; k["efectivos"] += l["tipo"] in EFECTIVOS
+                k["vendidos"] += l["vendio"] == "SI"; k["compraron"] += l["compro"]
+            items = [{"nombre": n, **v} for n, v in g.items()]
+            if orden:
+                items.sort(key=lambda x: orden.index(x["nombre"]) if x["nombre"] in orden else 99)
+            else:
+                items.sort(key=lambda x: -x["leads"])
+            return items
+
+        orden_tipos = [t for t, _ in TIPOS[:5]] + ["No contesta", "Sin gestionar", "Otros", "Duplicado"]
+        efect = sum(1 for l in ls if l["tipo"] in EFECTIVOS)
+        out.append({
+            "periodo": p, "leads": len(ls),
+            "gestionados": sum(1 for l in ls if l["tipo"] != "Sin gestionar"),
+            "efectivos": efect,
+            "vendidos": sum(1 for l in ls if l["vendio"] == "SI"),
+            "compraron": sum(1 for l in ls if l["compro"]),
+            "venta_cruce": round(venta_cruce.get(p, 0), 2),
+            "por_tipo": grupo(lambda l: l["tipo"], orden_tipos),
+            "por_origen": grupo(lambda l: l["origen"]),
+            "por_asesor": grupo(lambda l: l["asesor"]),
+            "calidad": {
+                "sin_numero": sum(1 for l in ls if not l["tel"]),
+                "numero_invalido": sum(1 for l in ls if l["tel"] == "invalido"),
+                "numero_repetido": sum(1 for l in ls if l["tel"] and l["tel"] != "invalido" and rep[l["tel"]] > 1),
+                "sin_origen": sum(1 for l in ls if l["origen"] == "Sin origen"),
+                "sin_asesor": sum(1 for l in ls if l["asesor"] == "Sin asesor"),
+                "sin_resolucion": sum(1 for l in ls if l["tipo"] == "Sin gestionar"),
+                "vendio_vacio": sum(1 for l in ls if not l["vendio"]),
+                "sin_interes": sum(1 for l in ls if not l["interes"]),
+                "fecha_texto": sum(1 for l in ls if l["fecha_texto"]),
+                "periodo_con_error": sum(1 for l in ls if not re.match(r"\d{4}-\d{2}$", l["periodo_planilla"])),
+                "vendido_sin_caso": sum(1 for l in ls if l["vendio"] == "SI" and not l["caso_venta"]),
+                "compro_sin_marcar": sum(1 for l in ls if l["compro"] and l["vendio"] != "SI"),
+                "marcado_sin_compra": sum(1 for l in ls if l["vendio"] == "SI" and not l["compro"]),
+            },
+        })
     return out
 
 
@@ -306,6 +444,7 @@ def build(wb):
                       "casos": sum(m["casos"] for m in meses), "unidades": sum(m["unidades"] for m in meses)},
         "meses": meses,
         "leads": leads_mes,
+        "leads_detalle": leads_detalle(wb, rows),
         "cotizaciones": cotizaciones(wb, hoy),
         "calidad": calidad,
     }

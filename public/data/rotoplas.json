@@ -1,13 +1,13 @@
 {
- "actualizado": "2026-11-12T06:45-05:00",
- "datos_hasta": "2026-11-11",
+ "actualizado": "2026-11-17T09:02-05:00",
+ "datos_hasta": "2026-11-16",
  "moneda": "PEN",
  "acumulado": {
-  "venta": 1749645.83,
+  "venta": 1826775.2,
   "objetivo": 2562830.0,
-  "cumplimiento": 0.6827,
-  "casos": 853,
-  "unidades": 1574.0
+  "cumplimiento": 0.7128,
+  "casos": 893,
+  "unidades": 1657.0
  },
  "meses": [
   {
@@ -2924,14 +2924,14 @@
   {
    "periodo": "2026-11",
    "nombre": "Noviembre 2026",
-   "venta": 188966.24,
+   "venta": 266095.61,
    "objetivo": 545472.0,
-   "cumplimiento": 0.3464,
-   "casos": 113,
-   "unidades": 161.0,
-   "ticket": 1672.27,
-   "venta_whatsapp": 185490.24,
-   "venta_llamada": 3476.0,
+   "cumplimiento": 0.4878,
+   "casos": 153,
+   "unidades": 244.0,
+   "ticket": 1739.19,
+   "venta_whatsapp": 251115.53,
+   "venta_llamada": 14980.08,
    "semanas": [
     {
      "semana": 1,
@@ -2940,8 +2940,13 @@
     },
     {
      "semana": 2,
-     "venta": 97715.09,
-     "casos": 50
+     "venta": 164196.28,
+     "casos": 82
+    },
+    {
+     "semana": 3,
+     "venta": 10648.18,
+     "casos": 10
     }
    ],
    "dias": [
@@ -2989,73 +2994,100 @@
      "fecha": "2026-11-11",
      "venta": 24432.31,
      "casos": 14
+    },
+    {
+     "fecha": "2026-11-12",
+     "venta": 9738.08,
+     "casos": 13
+    },
+    {
+     "fecha": "2026-11-13",
+     "venta": 50373.96,
+     "casos": 13
+    },
+    {
+     "fecha": "2026-11-14",
+     "venta": 6369.15,
+     "casos": 7
+    },
+    {
+     "fecha": "2026-11-16",
+     "venta": 10648.18,
+     "casos": 10
     }
    ],
    "asesores": [
     {
      "nombre": "Jair",
-     "venta": 86384.86,
-     "lineas": 57,
-     "unidades": 61.0,
-     "casos": 41
+     "venta": 139883.12,
+     "lineas": 73,
+     "unidades": 77.0,
+     "casos": 50
     },
     {
      "nombre": "Alberto",
-     "venta": 56453.17,
-     "lineas": 37,
-     "unidades": 48.0,
-     "casos": 31
+     "venta": 71868.48,
+     "lineas": 57,
+     "unidades": 80.0,
+     "casos": 42
     },
     {
      "nombre": "Facundo",
-     "venta": 46128.21,
-     "lineas": 51,
-     "unidades": 52.0,
-     "casos": 42
+     "venta": 54344.01,
+     "lineas": 77,
+     "unidades": 87.0,
+     "casos": 63
     }
    ],
    "familias": [
     {
      "nombre": "Tanque",
-     "venta": 87842.01,
-     "lineas": 61,
-     "unidades": 65.0,
-     "casos": 60
+     "venta": 101182.86,
+     "lineas": 74,
+     "unidades": 82.0,
+     "casos": 71
     },
     {
      "nombre": "Tanque industrial",
-     "venta": 38782.74,
-     "lineas": 3,
-     "unidades": 4.0,
-     "casos": 3
+     "venta": 72909.5,
+     "lineas": 4,
+     "unidades": 5.0,
+     "casos": 4
     },
     {
      "nombre": "Bombas",
-     "venta": 24101.56,
-     "lineas": 26,
-     "unidades": 29.0,
-     "casos": 26
+     "venta": 31812.74,
+     "lineas": 35,
+     "unidades": 38.0,
+     "casos": 35
     },
     {
      "nombre": "Cisterna",
-     "venta": 11384.0,
-     "lineas": 2,
-     "unidades": 2.0,
-     "casos": 2
+     "venta": 16678.0,
+     "lineas": 4,
+     "unidades": 4.0,
+     "casos": 4
     },
     {
      "nombre": "Biodigestor",
-     "venta": 7955.2,
-     "lineas": 3,
-     "unidades": 3.0,
-     "casos": 2
+     "venta": 15891.8,
+     "lineas": 5,
+     "unidades": 5.0,
+     "casos": 4
     },
     {
      "nombre": "Otros",
-     "venta": 5415.0,
-     "lineas": 22,
-     "unidades": 23.0,
-     "casos": 11
+     "venta": 8351.8,
+     "lineas": 42,
+     "unidades": 49.0,
+     "casos": 24
+    },
+    {
+     "nombre": "Tanque pisco y vino",
+     "venta": 5927.73,
+     "lineas": 3,
+     "unidades": 9.0,
+     "casos": 2
     },
     {
      "nombre": "Termas",
@@ -3066,17 +3098,17 @@
     },
     {
      "nombre": "Accesorios industriales",
-     "venta": 2894.28,
-     "lineas": 7,
-     "unidades": 12.0,
-     "casos": 2
+     "venta": 3538.18,
+     "lineas": 8,
+     "unidades": 13.0,
+     "casos": 3
     },
     {
      "nombre": "Purificadores",
-     "venta": 2470.0,
-     "lineas": 9,
-     "unidades": 10.0,
-     "casos": 9
+     "venta": 2355.0,
+     "lineas": 19,
+     "unidades": 25.0,
+     "casos": 19
     },
     {
      "nombre": "Tanque/cisterna",
@@ -3086,27 +3118,34 @@
      "casos": 1
     },
     {
-     "nombre": "Tanque pisco y vino",
-     "venta": 762.45,
+     "nombre": "Servicio",
+     "venta": 227.0,
+     "lineas": 5,
+     "unidades": 5.0,
+     "casos": 5
+    }
+   ],
+   "productos": [
+    {
+     "nombre": "Tanque industrial de agua 25,000 L sin accesorios",
+     "venta": 34126.76,
      "lineas": 1,
      "unidades": 1.0,
      "casos": 1
     },
-    {
-     "nombre": "Servicio",
-     "venta": 138.0,
-     "lineas": 3,
-     "unidades": 3.0,
-     "casos": 3
-    }
-   ],
-   "productos": [
     {
      "nombre": "TANQUE INDUSTRIAL PARA AGUA 10,000L SIN ACCESORIOS",
      "venta": 33115.03,
      "lineas": 2,
      "unidades": 3.0,
      "casos": 2
+    },
+    {
+     "nombre": "Tanque plus+ 1100L GDPV Rotoplas",
+     "venta": 26964.2,
+     "lineas": 29,
+     "unidades": 31.0,
+     "casos": 29
     },
     {
      "nombre": "Tanque industrial de agua 10,000 L sin accesorios",
@@ -3116,32 +3155,39 @@
      "casos": 2
     },
     {
-     "nombre": "Tanque plus+ 1100L GDPV Rotoplas",
-     "venta": 25224.4,
-     "lineas": 27,
-     "unidades": 29.0,
-     "casos": 27
-    },
-    {
      "nombre": "Bomba Inteligente 1.2 HP",
-     "venta": 11990.0,
-     "lineas": 10,
-     "unidades": 10.0,
-     "casos": 10
+     "venta": 16824.08,
+     "lineas": 14,
+     "unidades": 14.0,
+     "casos": 14
     },
     {
      "nombre": "Tanque plus+ 700L GDVP Rotoplas",
-     "venta": 9620.0,
-     "lineas": 13,
-     "unidades": 13.0,
-     "casos": 13
+     "venta": 13320.0,
+     "lineas": 18,
+     "unidades": 18.0,
+     "casos": 18
     },
     {
      "nombre": "Tanque plus+ 2500L GDPV Rotoplas",
-     "venta": 9534.0,
-     "lineas": 6,
-     "unidades": 6.0,
-     "casos": 6
+     "venta": 12712.0,
+     "lineas": 8,
+     "unidades": 8.0,
+     "casos": 8
+    },
+    {
+     "nombre": "Biodigestor Autolimpiable 3000 Litros",
+     "venta": 12656.6,
+     "lineas": 2,
+     "unidades": 2.0,
+     "casos": 2
+    },
+    {
+     "nombre": "Bomba Inteligente 1/2 HP",
+     "venta": 8855.2,
+     "lineas": 11,
+     "unidades": 13.0,
+     "casos": 11
     },
     {
      "nombre": "Cisterna de agua de 5,000 litros",
@@ -3151,18 +3197,11 @@
      "casos": 1
     },
     {
-     "nombre": "Bomba Inteligente 1/2 HP",
-     "venta": 6790.0,
-     "lineas": 8,
-     "unidades": 10.0,
-     "casos": 8
-    },
-    {
-     "nombre": "Biodigestor Autolimpiable 3000 Litros",
-     "venta": 6259.0,
-     "lineas": 1,
-     "unidades": 1.0,
-     "casos": 1
+     "nombre": "Cisterna de agua Garantía de por vida* 2,800 Litros",
+     "venta": 6170.0,
+     "lineas": 2,
+     "unidades": 2.0,
+     "casos": 2
     },
     {
      "nombre": "TANQUE INDUSTRIAL PARA AGUA 5,000L SIN ACCESORIOS",
@@ -3179,69 +3218,76 @@
      "casos": 4
     },
     {
+     "nombre": "Cisterna de agua Garantía de por vida* 2000 Litros",
+     "venta": 4418.0,
+     "lineas": 2,
+     "unidades": 2.0,
+     "casos": 2
+    },
+    {
      "nombre": "Bomba Inteligente 1/4 HP",
-     "venta": 3823.56,
-     "lineas": 6,
-     "unidades": 7.0,
-     "casos": 6
-    },
-    {
-     "nombre": "Tanque plus+ 2500L GDPV Rotoplas Tanque plus",
-     "venta": 3178.0,
-     "lineas": 2,
-     "unidades": 2.0,
-     "casos": 2
-    },
-    {
-     "nombre": "Cisterna de agua Garantía de por vida* 2,800 Litros",
-     "venta": 3085.0,
-     "lineas": 1,
-     "unidades": 1.0,
-     "casos": 1
-    },
-    {
-     "nombre": "Biodigestor Autolimpiable 1300 Litros",
-     "venta": 3078.0,
-     "lineas": 2,
-     "unidades": 2.0,
-     "casos": 2
+     "venta": 4398.56,
+     "lineas": 7,
+     "unidades": 8.0,
+     "casos": 7
     }
    ],
    "provincias": [
     {
      "nombre": "Lima",
-     "venta": 175308.44,
-     "lineas": 130,
-     "unidades": 146.0,
-     "casos": 100
-    },
-    {
-     "nombre": "Callao",
-     "venta": 5415.9,
-     "lineas": 5,
-     "unidades": 5.0,
-     "casos": 5
+     "venta": 234470.88,
+     "lineas": 177,
+     "unidades": 199.0,
+     "casos": 131
     },
     {
      "nombre": "Huanuco",
-     "venta": 3128.0,
-     "lineas": 2,
-     "unidades": 2.0,
-     "casos": 1
+     "venta": 9525.6,
+     "lineas": 3,
+     "unidades": 3.0,
+     "casos": 2
     },
     {
-     "nombre": "Cusco",
-     "venta": 1199.0,
+     "nombre": "Callao",
+     "venta": 6561.9,
+     "lineas": 10,
+     "unidades": 10.0,
+     "casos": 8
+    },
+    {
+     "nombre": "Ica",
+     "venta": 5905.28,
+     "lineas": 3,
+     "unidades": 9.0,
+     "casos": 2
+    },
+    {
+     "nombre": "Trujillo",
+     "venta": 1776.05,
      "lineas": 1,
-     "unidades": 1.0,
+     "unidades": 5.0,
      "casos": 1
     },
     {
      "nombre": "Arequipa",
-     "venta": 869.9,
+     "venta": 1728.9,
+     "lineas": 4,
+     "unidades": 4.0,
+     "casos": 3
+    },
+    {
+     "nombre": "Huaura",
+     "venta": 1589.0,
      "lineas": 1,
      "unidades": 1.0,
      "casos": 1
+    },
+    {
+     "nombre": "Cusco",
+     "venta": 1493.0,
+     "lineas": 2,
+     "unidades": 7.0,
+     "casos": 2
     },
     {
      "nombre": "Sin dato",
@@ -3256,101 +3302,87 @@
      "lineas": 1,
      "unidades": 1.0,
      "casos": 1
-    },
-    {
-     "nombre": "Cajamarca",
-     "venta": 679.0,
-     "lineas": 1,
-     "unidades": 1.0,
-     "casos": 1
-    },
-    {
-     "nombre": "Ilo",
-     "venta": 559.0,
-     "lineas": 1,
-     "unidades": 1.0,
-     "casos": 1
-    },
-    {
-     "nombre": "Comas",
-     "venta": 299.0,
-     "lineas": 1,
-     "unidades": 1.0,
-     "casos": 1
     }
    ],
    "origen": [
     {
      "nombre": "Whatsapp entrante",
-     "venta": 185039.34,
-     "lineas": 140,
-     "unidades": 156.0,
-     "casos": 109
+     "venta": 250541.33,
+     "lineas": 191,
+     "unidades": 221.0,
+     "casos": 143
     },
     {
      "nombre": "Llamada entrante",
-     "venta": 2378.0,
-     "lineas": 3,
-     "unidades": 3.0,
-     "casos": 3
+     "venta": 11676.18,
+     "lineas": 9,
+     "unidades": 15.0,
+     "casos": 7
     },
     {
      "nombre": "Llamada saliente",
-     "venta": 1548.9,
-     "lineas": 2,
-     "unidades": 2.0,
-     "casos": 2
+     "venta": 3878.1,
+     "lineas": 7,
+     "unidades": 8.0,
+     "casos": 5
     }
    ],
    "pago": [
     {
      "nombre": "Pagina web",
-     "venta": 111787.32,
-     "lineas": 119,
-     "unidades": 129.0,
-     "casos": 107
+     "venta": 146059.33,
+     "lineas": 174,
+     "unidades": 205.0,
+     "casos": 145
     },
     {
      "nombre": "Transferencia",
-     "venta": 77178.92,
-     "lineas": 26,
-     "unidades": 32.0,
-     "casos": 7
+     "venta": 120036.28,
+     "lineas": 33,
+     "unidades": 39.0,
+     "casos": 10
     }
    ],
    "tramos_ticket": [
     {
      "tramo": "< 500",
-     "casos": 18,
-     "venta": 2994.0
+     "casos": 35,
+     "venta": 5678.9
     },
     {
      "tramo": "500–1.000",
-     "casos": 59,
-     "venta": 45452.35
+     "casos": 69,
+     "venta": 52785.15
     },
     {
      "tramo": "1.000–2.000",
-     "casos": 22,
-     "venta": 30579.16
+     "casos": 31,
+     "venta": 43124.31
     },
     {
      "tramo": "2.000–5.000",
-     "casos": 9,
-     "venta": 23644.9
+     "casos": 11,
+     "venta": 31630.98
     },
     {
      "tramo": "5.000–10.000",
-     "casos": 2,
-     "venta": 12162.91
+     "casos": 4,
+     "venta": 23725.79
     },
     {
      "tramo": "> 10.000",
-     "casos": 4,
-     "venta": 74132.92
+     "casos": 5,
+     "venta": 109150.48
     }
    ],
    "ventas_grandes": [
+    {
+     "caso": "28294",
+     "venta": 35017.56,
+     "provincia": "Lima",
+     "asesor": "Jair",
+     "familia": "Tanque industrial"
+    },
     {
      "caso": "22890",
      "venta": 23110.0,
@@ -3387,25 +3419,18 @@
      "familia": "Biodigestor"
     },
     {
+     "caso": "28428",
+     "venta": 6397.6,
+     "provincia": "Huanuco",
+     "asesor": "Jair",
+     "familia": "Biodigestor"
+    },
+    {
      "caso": "18580",
      "venta": 5667.71,
      "provincia": "Lima",
      "asesor": "Alberto",
      "familia": "Tanque industrial"
-    },
-    {
-     "caso": "28253",
-     "venta": 3701.0,
-     "provincia": "Lima",
-     "asesor": "Alberto",
-     "familia": "Cisterna"
-    },
-    {
-     "caso": "26736",
-     "venta": 3128.0,
-     "provincia": "Huanuco",
-     "asesor": "Facundo",
-     "familia": "Tanque"
     }
    ]
   }
@@ -3446,11 +3471,11 @@
   },
   {
    "periodo": "2026-08",
-   "gestionados": 452,
-   "contactados": 446,
+   "gestionados": 552,
+   "contactados": 544,
    "vendidos": 2,
    "sin_periodo": 6,
-   "conversion_real": 0.0045,
+   "conversion_real": 0.0037,
    "tablero_gestionados": 546.0,
    "tablero_contactados": 544.0,
    "tablero_convertidos": 119.0
@@ -3479,25 +3504,1002 @@
   },
   {
    "periodo": "2026-11",
-   "gestionados": 165,
-   "contactados": 0,
+   "gestionados": 250,
+   "contactados": 2,
    "vendidos": 0,
-   "sin_periodo": 165,
-   "conversion_real": null,
+   "sin_periodo": 250,
+   "conversion_real": 0.0,
    "tablero_gestionados": 0.0,
    "tablero_contactados": 0.0,
-   "tablero_convertidos": 143.0
+   "tablero_convertidos": 200.0
   },
   {
    "periodo": "sin-fecha",
-   "gestionados": 133,
-   "contactados": 108,
+   "gestionados": 33,
+   "contactados": 10,
    "vendidos": 0,
    "sin_periodo": 27,
    "conversion_real": 0.0,
    "tablero_gestionados": null,
    "tablero_contactados": null,
    "tablero_convertidos": null
+  }
+ ],
+ "leads_detalle": [
+  {
+   "periodo": "2026-05",
+   "leads": 51,
+   "gestionados": 51,
+   "efectivos": 25,
+   "vendidos": 0,
+   "compraron": 0,
+   "venta_cruce": 0.0,
+   "por_tipo": [
+    {
+     "nombre": "WhatsApp 1 a 1",
+     "leads": 25,
+     "efectivos": 25,
+     "vendidos": 0,
+     "compraron": 0
+    },
+    {
+     "nombre": "Otros",
+     "leads": 26,
+     "efectivos": 0,
+     "vendidos": 0,
+     "compraron": 0
+    }
+   ],
+   "por_origen": [
+    {
+     "nombre": "Medialabs · Termas",
+     "leads": 51,
+     "efectivos": 25,
+     "vendidos": 0,
+     "compraron": 0
+    }
+   ],
+   "por_asesor": [
+    {
+     "nombre": "Jean",
+     "leads": 18,
+     "efectivos": 9,
+     "vendidos": 0,
+     "compraron": 0
+    },
+    {
+     "nombre": "Jair",
+     "leads": 17,
+     "efectivos": 8,
+     "vendidos": 0,
+     "compraron": 0
+    },
+    {
+     "nombre": "Jonathan",
+     "leads": 16,
+     "efectivos": 8,
+     "vendidos": 0,
+     "compraron": 0
+    }
+   ],
+   "calidad": {
+    "sin_numero": 0,
+    "numero_invalido": 0,
+    "numero_repetido": 51,
+    "sin_origen": 0,
+    "sin_asesor": 0,
+    "sin_resolucion": 0,
+    "vendio_vacio": 25,
+    "sin_interes": 51,
+    "fecha_texto": 0,
+    "periodo_con_error": 0,
+    "vendido_sin_caso": 0,
+    "compro_sin_marcar": 0,
+    "marcado_sin_compra": 0
+   }
+  },
+  {
+   "periodo": "2026-06",
+   "leads": 518,
+   "gestionados": 518,
+   "efectivos": 143,
+   "vendidos": 30,
+   "compraron": 2,
+   "venta_cruce": 1085.65,
+   "por_tipo": [
+    {
+     "nombre": "Habló por llamada",
+     "leads": 27,
+     "efectivos": 27,
+     "vendidos": 0,
+     "compraron": 1
+    },
+    {
+     "nombre": "Atendió y no le interesa",
+     "leads": 13,
+     "efectivos": 13,
+     "vendidos": 0,
+     "compraron": 0
+    },
+    {
+     "nombre": "Ya compró",
+     "leads": 30,
+     "efectivos": 30,
+     "vendidos": 30,
+     "compraron": 0
+    },
+    {
+     "nombre": "WhatsApp 1 a 1",
+     "leads": 73,
+     "efectivos": 73,
+     "vendidos": 0,
+     "compraron": 0
+    },
+    {
+     "nombre": "No contesta",
+     "leads": 328,
+     "efectivos": 0,
+     "vendidos": 0,
+     "compraron": 0
+    },
+    {
+     "nombre": "Otros",
+     "leads": 47,
+     "efectivos": 0,
+     "vendidos": 0,
+     "compraron": 1
+    }
+   ],
+   "por_origen": [
+    {
+     "nombre": "Medialabs · Termas",
+     "leads": 518,
+     "efectivos": 143,
+     "vendidos": 30,
+     "compraron": 2
+    }
+   ],
+   "por_asesor": [
+    {
+     "nombre": "Jean",
+     "leads": 164,
+     "efectivos": 43,
+     "vendidos": 11,
+     "compraron": 1
+    },
+    {
+     "nombre": "Jeremy",
+     "leads": 113,
+     "efectivos": 20,
+     "vendidos": 4,
+     "compraron": 0
+    },
+    {
+     "nombre": "Jonathan",
+     "leads": 109,
+     "efectivos": 35,
+     "vendidos": 8,
+     "compraron": 0
+    },
+    {
+     "nombre": "Jair",
+     "leads": 107,
+     "efectivos": 38,
+     "vendidos": 4,
+     "compraron": 1
+    },
+    {
+     "nombre": "Carolina",
+     "leads": 14,
+     "efectivos": 5,
+     "vendidos": 2,
+     "compraron": 0
+    },
+    {
+     "nombre": "Sandra",
+     "leads": 11,
+     "efectivos": 2,
+     "vendidos": 1,
+     "compraron": 0
+    }
+   ],
+   "calidad": {
+    "sin_numero": 0,
+    "numero_invalido": 4,
+    "numero_repetido": 124,
+    "sin_origen": 0,
+    "sin_asesor": 0,
+    "sin_resolucion": 0,
+    "vendio_vacio": 42,
+    "sin_interes": 518,
+    "fecha_texto": 0,
+    "periodo_con_error": 0,
+    "vendido_sin_caso": 30,
+    "compro_sin_marcar": 2,
+    "marcado_sin_compra": 30
+   }
+  },
+  {
+   "periodo": "2026-07",
+   "leads": 716,
+   "gestionados": 677,
+   "efectivos": 485,
+   "vendidos": 8,
+   "compraron": 38,
+   "venta_cruce": 125086.56,
+   "por_tipo": [
+    {
+     "nombre": "Atendió y no le interesa",
+     "leads": 18,
+     "efectivos": 18,
+     "vendidos": 0,
+     "compraron": 1
+    },
+    {
+     "nombre": "Ya compró",
+     "leads": 9,
+     "efectivos": 9,
+     "vendidos": 7,
+     "compraron": 0
+    },
+    {
+     "nombre": "WhatsApp 1 a 1",
+     "leads": 458,
+     "efectivos": 458,
+     "vendidos": 1,
+     "compraron": 2
+    },
+    {
+     "nombre": "No contesta",
+     "leads": 168,
+     "efectivos": 0,
+     "vendidos": 0,
+     "compraron": 1
+    },
+    {
+     "nombre": "Sin gestionar",
+     "leads": 39,
+     "efectivos": 0,
+     "vendidos": 0,
+     "compraron": 33
+    },
+    {
+     "nombre": "Otros",
+     "leads": 24,
+     "efectivos": 0,
+     "vendidos": 0,
+     "compraron": 1
+    }
+   ],
+   "por_origen": [
+    {
+     "nombre": "Medialabs · Termas",
+     "leads": 659,
+     "efectivos": 469,
+     "vendidos": 8,
+     "compraron": 5
+    },
+    {
+     "nombre": "Recompra",
+     "leads": 34,
+     "efectivos": 0,
+     "vendidos": 0,
+     "compraron": 33
+    },
+    {
+     "nombre": "Google · Mix",
+     "leads": 14,
+     "efectivos": 14,
+     "vendidos": 0,
+     "compraron": 0
+    },
+    {
+     "nombre": "Google · Agroindustria",
+     "leads": 8,
+     "efectivos": 2,
+     "vendidos": 0,
+     "compraron": 0
+    },
+    {
+     "nombre": "Sin origen",
+     "leads": 1,
+     "efectivos": 0,
+     "vendidos": 0,
+     "compraron": 0
+    }
+   ],
+   "por_asesor": [
+    {
+     "nombre": "Jonathan",
+     "leads": 321,
+     "efectivos": 243,
+     "vendidos": 6,
+     "compraron": 2
+    },
+    {
+     "nombre": "Jair",
+     "leads": 318,
+     "efectivos": 205,
+     "vendidos": 2,
+     "compraron": 19
+    },
+    {
+     "nombre": "Jean",
+     "leads": 56,
+     "efectivos": 37,
+     "vendidos": 0,
+     "compraron": 1
+    },
+    {
+     "nombre": "Alberto",
+     "leads": 16,
+     "efectivos": 0,
+     "vendidos": 0,
+     "compraron": 16
+    },
+    {
+     "nombre": "Sin asesor",
+     "leads": 5,
+     "efectivos": 0,
+     "vendidos": 0,
+     "compraron": 0
+    }
+   ],
+   "calidad": {
+    "sin_numero": 0,
+    "numero_invalido": 0,
+    "numero_repetido": 79,
+    "sin_origen": 1,
+    "sin_asesor": 5,
+    "sin_resolucion": 39,
+    "vendio_vacio": 50,
+    "sin_interes": 682,
+    "fecha_texto": 0,
+    "periodo_con_error": 0,
+    "vendido_sin_caso": 7,
+    "compro_sin_marcar": 37,
+    "marcado_sin_compra": 7
+   }
+  },
+  {
+   "periodo": "2026-08",
+   "leads": 552,
+   "gestionados": 546,
+   "efectivos": 120,
+   "vendidos": 2,
+   "compraron": 8,
+   "venta_cruce": 60971.08,
+   "por_tipo": [
+    {
+     "nombre": "Habló por llamada",
+     "leads": 1,
+     "efectivos": 1,
+     "vendidos": 1,
+     "compraron": 1
+    },
+    {
+     "nombre": "Atendió y no le interesa",
+     "leads": 2,
+     "efectivos": 2,
+     "vendidos": 0,
+     "compraron": 0
+    },
+    {
+     "nombre": "Ya compró",
+     "leads": 1,
+     "efectivos": 1,
+     "vendidos": 0,
+     "compraron": 0
+    },
+    {
+     "nombre": "WhatsApp 1 a 1",
+     "leads": 116,
+     "efectivos": 116,
+     "vendidos": 1,
+     "compraron": 1
+    },
+    {
+     "nombre": "Campaña WhatsApp masiva",
+     "leads": 424,
+     "efectivos": 0,
+     "vendidos": 0,
+     "compraron": 0
+    },
+    {
+     "nombre": "No contesta",
+     "leads": 2,
+     "efectivos": 0,
+     "vendidos": 0,
+     "compraron": 0
+    },
+    {
+     "nombre": "Sin gestionar",
+     "leads": 6,
+     "efectivos": 0,
+     "vendidos": 0,
+     "compraron": 6
+    }
+   ],
+   "por_origen": [
+    {
+     "nombre": "Medialabs · Termas",
+     "leads": 516,
+     "efectivos": 101,
+     "vendidos": 0,
+     "compraron": 0
+    },
+    {
+     "nombre": "Google · Mix",
+     "leads": 19,
+     "efectivos": 15,
+     "vendidos": 1,
+     "compraron": 1
+    },
+    {
+     "nombre": "Termas y purificadores",
+     "leads": 7,
+     "efectivos": 0,
+     "vendidos": 0,
+     "compraron": 0
+    },
+    {
+     "nombre": "Recompra",
+     "leads": 6,
+     "efectivos": 0,
+     "vendidos": 0,
+     "compraron": 6
+    },
+    {
+     "nombre": "Google · Agroindustria",
+     "leads": 4,
+     "efectivos": 4,
+     "vendidos": 1,
+     "compraron": 1
+    }
+   ],
+   "por_asesor": [
+    {
+     "nombre": "Jair",
+     "leads": 280,
+     "efectivos": 78,
+     "vendidos": 2,
+     "compraron": 8
+    },
+    {
+     "nombre": "Sin asesor",
+     "leads": 206,
+     "efectivos": 0,
+     "vendidos": 0,
+     "compraron": 0
+    },
+    {
+     "nombre": "Jean",
+     "leads": 22,
+     "efectivos": 22,
+     "vendidos": 0,
+     "compraron": 0
+    },
+    {
+     "nombre": "Jonathan",
+     "leads": 20,
+     "efectivos": 20,
+     "vendidos": 0,
+     "compraron": 0
+    },
+    {
+     "nombre": "Jorge",
+     "leads": 17,
+     "efectivos": 0,
+     "vendidos": 0,
+     "compraron": 0
+    },
+    {
+     "nombre": "Nati",
+     "leads": 7,
+     "efectivos": 0,
+     "vendidos": 0,
+     "compraron": 0
+    }
+   ],
+   "calidad": {
+    "sin_numero": 0,
+    "numero_invalido": 1,
+    "numero_repetido": 7,
+    "sin_origen": 0,
+    "sin_asesor": 206,
+    "sin_resolucion": 6,
+    "vendio_vacio": 418,
+    "sin_interes": 398,
+    "fecha_texto": 100,
+    "periodo_con_error": 6,
+    "vendido_sin_caso": 0,
+    "compro_sin_marcar": 6,
+    "marcado_sin_compra": 0
+   }
+  },
+  {
+   "periodo": "2026-09",
+   "leads": 718,
+   "gestionados": 701,
+   "efectivos": 179,
+   "vendidos": 2,
+   "compraron": 3,
+   "venta_cruce": 5605.1,
+   "por_tipo": [
+    {
+     "nombre": "Habló por llamada",
+     "leads": 77,
+     "efectivos": 77,
+     "vendidos": 2,
+     "compraron": 1
+    },
+    {
+     "nombre": "Atendió y no le interesa",
+     "leads": 9,
+     "efectivos": 9,
+     "vendidos": 0,
+     "compraron": 0
+    },
+    {
+     "nombre": "Ya compró",
+     "leads": 6,
+     "efectivos": 6,
+     "vendidos": 0,
+     "compraron": 0
+    },
+    {
+     "nombre": "WhatsApp 1 a 1",
+     "leads": 87,
+     "efectivos": 87,
+     "vendidos": 0,
+     "compraron": 0
+    },
+    {
+     "nombre": "Campaña WhatsApp masiva",
+     "leads": 164,
+     "efectivos": 0,
+     "vendidos": 0,
+     "compraron": 0
+    },
+    {
+     "nombre": "No contesta",
+     "leads": 356,
+     "efectivos": 0,
+     "vendidos": 0,
+     "compraron": 1
+    },
+    {
+     "nombre": "Sin gestionar",
+     "leads": 17,
+     "efectivos": 0,
+     "vendidos": 0,
+     "compraron": 1
+    },
+    {
+     "nombre": "Otros",
+     "leads": 2,
+     "efectivos": 0,
+     "vendidos": 0,
+     "compraron": 0
+    }
+   ],
+   "por_origen": [
+    {
+     "nombre": "Medialabs · Termas",
+     "leads": 680,
+     "efectivos": 165,
+     "vendidos": 0,
+     "compraron": 0
+    },
+    {
+     "nombre": "Termas y purificadores",
+     "leads": 17,
+     "efectivos": 3,
+     "vendidos": 0,
+     "compraron": 0
+    },
+    {
+     "nombre": "Google · Agroindustria",
+     "leads": 13,
+     "efectivos": 10,
+     "vendidos": 2,
+     "compraron": 1
+    },
+    {
+     "nombre": "Google · Mix",
+     "leads": 6,
+     "efectivos": 1,
+     "vendidos": 0,
+     "compraron": 1
+    },
+    {
+     "nombre": "Base",
+     "leads": 1,
+     "efectivos": 0,
+     "vendidos": 0,
+     "compraron": 0
+    },
+    {
+     "nombre": "Recompra",
+     "leads": 1,
+     "efectivos": 0,
+     "vendidos": 0,
+     "compraron": 1
+    }
+   ],
+   "por_asesor": [
+    {
+     "nombre": "Alberto",
+     "leads": 248,
+     "efectivos": 60,
+     "vendidos": 1,
+     "compraron": 2
+    },
+    {
+     "nombre": "Jair",
+     "leads": 247,
+     "efectivos": 78,
+     "vendidos": 1,
+     "compraron": 1
+    },
+    {
+     "nombre": "Sin asesor",
+     "leads": 111,
+     "efectivos": 0,
+     "vendidos": 0,
+     "compraron": 0
+    },
+    {
+     "nombre": "Jorge",
+     "leads": 80,
+     "efectivos": 12,
+     "vendidos": 0,
+     "compraron": 0
+    },
+    {
+     "nombre": "Jonathan",
+     "leads": 15,
+     "efectivos": 15,
+     "vendidos": 0,
+     "compraron": 0
+    },
+    {
+     "nombre": "Jean",
+     "leads": 14,
+     "efectivos": 14,
+     "vendidos": 0,
+     "compraron": 0
+    },
+    {
+     "nombre": "Nati",
+     "leads": 3,
+     "efectivos": 0,
+     "vendidos": 0,
+     "compraron": 0
+    }
+   ],
+   "calidad": {
+    "sin_numero": 0,
+    "numero_invalido": 0,
+    "numero_repetido": 13,
+    "sin_origen": 0,
+    "sin_asesor": 111,
+    "sin_resolucion": 17,
+    "vendio_vacio": 44,
+    "sin_interes": 46,
+    "fecha_texto": 0,
+    "periodo_con_error": 1,
+    "vendido_sin_caso": 0,
+    "compro_sin_marcar": 2,
+    "marcado_sin_compra": 1
+   }
+  },
+  {
+   "periodo": "2026-10",
+   "leads": 868,
+   "gestionados": 673,
+   "efectivos": 114,
+   "vendidos": 3,
+   "compraron": 5,
+   "venta_cruce": 42312.53,
+   "por_tipo": [
+    {
+     "nombre": "Habló por llamada",
+     "leads": 108,
+     "efectivos": 108,
+     "vendidos": 2,
+     "compraron": 2
+    },
+    {
+     "nombre": "Atendió y no le interesa",
+     "leads": 4,
+     "efectivos": 4,
+     "vendidos": 0,
+     "compraron": 0
+    },
+    {
+     "nombre": "Ya compró",
+     "leads": 2,
+     "efectivos": 2,
+     "vendidos": 0,
+     "compraron": 0
+    },
+    {
+     "nombre": "No contesta",
+     "leads": 556,
+     "efectivos": 0,
+     "vendidos": 1,
+     "compraron": 1
+    },
+    {
+     "nombre": "Sin gestionar",
+     "leads": 195,
+     "efectivos": 0,
+     "vendidos": 0,
+     "compraron": 2
+    },
+    {
+     "nombre": "Duplicado",
+     "leads": 3,
+     "efectivos": 0,
+     "vendidos": 0,
+     "compraron": 0
+    }
+   ],
+   "por_origen": [
+    {
+     "nombre": "Medialabs · Termas",
+     "leads": 729,
+     "efectivos": 92,
+     "vendidos": 2,
+     "compraron": 1
+    },
+    {
+     "nombre": "Termas y purificadores",
+     "leads": 59,
+     "efectivos": 9,
+     "vendidos": 1,
+     "compraron": 1
+    },
+    {
+     "nombre": "Google · Agroindustria",
+     "leads": 37,
+     "efectivos": 7,
+     "vendidos": 0,
+     "compraron": 1
+    },
+    {
+     "nombre": "Google · Mix",
+     "leads": 33,
+     "efectivos": 5,
+     "vendidos": 0,
+     "compraron": 2
+    },
+    {
+     "nombre": "Ferreterías",
+     "leads": 10,
+     "efectivos": 1,
+     "vendidos": 0,
+     "compraron": 0
+    }
+   ],
+   "por_asesor": [
+    {
+     "nombre": "Jair",
+     "leads": 414,
+     "efectivos": 61,
+     "vendidos": 1,
+     "compraron": 1
+    },
+    {
+     "nombre": "Alberto",
+     "leads": 403,
+     "efectivos": 53,
+     "vendidos": 2,
+     "compraron": 4
+    },
+    {
+     "nombre": "Facundo",
+     "leads": 51,
+     "efectivos": 0,
+     "vendidos": 0,
+     "compraron": 0
+    }
+   ],
+   "calidad": {
+    "sin_numero": 0,
+    "numero_invalido": 2,
+    "numero_repetido": 45,
+    "sin_origen": 0,
+    "sin_asesor": 0,
+    "sin_resolucion": 195,
+    "vendio_vacio": 196,
+    "sin_interes": 0,
+    "fecha_texto": 0,
+    "periodo_con_error": 373,
+    "vendido_sin_caso": 3,
+    "compro_sin_marcar": 4,
+    "marcado_sin_compra": 2
+   }
+  },
+  {
+   "periodo": "2026-11",
+   "leads": 250,
+   "gestionados": 6,
+   "efectivos": 2,
+   "vendidos": 0,
+   "compraron": 3,
+   "venta_cruce": 832.0,
+   "por_tipo": [
+    {
+     "nombre": "Habló por llamada",
+     "leads": 2,
+     "efectivos": 2,
+     "vendidos": 0,
+     "compraron": 0
+    },
+    {
+     "nombre": "No contesta",
+     "leads": 4,
+     "efectivos": 0,
+     "vendidos": 0,
+     "compraron": 0
+    },
+    {
+     "nombre": "Sin gestionar",
+     "leads": 244,
+     "efectivos": 0,
+     "vendidos": 0,
+     "compraron": 3
+    }
+   ],
+   "por_origen": [
+    {
+     "nombre": "Medialabs · Termas",
+     "leads": 219,
+     "efectivos": 2,
+     "vendidos": 0,
+     "compraron": 2
+    },
+    {
+     "nombre": "Google · Mix",
+     "leads": 27,
+     "efectivos": 0,
+     "vendidos": 0,
+     "compraron": 1
+    },
+    {
+     "nombre": "Google · Agroindustria",
+     "leads": 4,
+     "efectivos": 0,
+     "vendidos": 0,
+     "compraron": 0
+    }
+   ],
+   "por_asesor": [
+    {
+     "nombre": "Sin asesor",
+     "leads": 131,
+     "efectivos": 0,
+     "vendidos": 0,
+     "compraron": 1
+    },
+    {
+     "nombre": "Alberto",
+     "leads": 40,
+     "efectivos": 0,
+     "vendidos": 0,
+     "compraron": 0
+    },
+    {
+     "nombre": "Facundo",
+     "leads": 40,
+     "efectivos": 2,
+     "vendidos": 0,
+     "compraron": 2
+    },
+    {
+     "nombre": "Jair",
+     "leads": 39,
+     "efectivos": 0,
+     "vendidos": 0,
+     "compraron": 0
+    }
+   ],
+   "calidad": {
+    "sin_numero": 0,
+    "numero_invalido": 0,
+    "numero_repetido": 8,
+    "sin_origen": 0,
+    "sin_asesor": 131,
+    "sin_resolucion": 244,
+    "vendio_vacio": 248,
+    "sin_interes": 0,
+    "fecha_texto": 0,
+    "periodo_con_error": 250,
+    "vendido_sin_caso": 0,
+    "compro_sin_marcar": 3,
+    "marcado_sin_compra": 0
+   }
+  },
+  {
+   "periodo": "sin-fecha",
+   "leads": 33,
+   "gestionados": 32,
+   "efectivos": 10,
+   "vendidos": 0,
+   "compraron": 6,
+   "venta_cruce": 73055.07,
+   "por_tipo": [
+    {
+     "nombre": "Habló por llamada",
+     "leads": 10,
+     "efectivos": 10,
+     "vendidos": 0,
+     "compraron": 1
+    },
+    {
+     "nombre": "No contesta",
+     "leads": 22,
+     "efectivos": 0,
+     "vendidos": 0,
+     "compraron": 4
+    },
+    {
+     "nombre": "Sin gestionar",
+     "leads": 1,
+     "efectivos": 0,
+     "vendidos": 0,
+     "compraron": 1
+    }
+   ],
+   "por_origen": [
+    {
+     "nombre": "Termas y purificadores",
+     "leads": 27,
+     "efectivos": 9,
+     "vendidos": 0,
+     "compraron": 0
+    },
+    {
+     "nombre": "Recompra",
+     "leads": 6,
+     "efectivos": 1,
+     "vendidos": 0,
+     "compraron": 6
+    }
+   ],
+   "por_asesor": [
+    {
+     "nombre": "Jair",
+     "leads": 19,
+     "efectivos": 4,
+     "vendidos": 0,
+     "compraron": 6
+    },
+    {
+     "nombre": "Alberto",
+     "leads": 14,
+     "efectivos": 6,
+     "vendidos": 0,
+     "compraron": 0
+    }
+   ],
+   "calidad": {
+    "sin_numero": 0,
+    "numero_invalido": 0,
+    "numero_repetido": 0,
+    "sin_origen": 0,
+    "sin_asesor": 0,
+    "sin_resolucion": 1,
+    "vendio_vacio": 1,
+    "sin_interes": 0,
+    "fecha_texto": 33,
+    "periodo_con_error": 27,
+    "vendido_sin_caso": 0,
+    "compro_sin_marcar": 6,
+    "marcado_sin_compra": 0
+   }
   }
  ],
  "cotizaciones": {
@@ -3518,119 +4520,119 @@
     "asesor": "Alberto",
     "importe": 214082.76,
     "ultimo_contacto": "2026-09-08",
-    "dias_sin_contacto": 65
+    "dias_sin_contacto": 70
    },
    {
     "caso": "15507",
     "asesor": "Jair",
     "importe": 173784.0,
     "ultimo_contacto": "2026-10-02",
-    "dias_sin_contacto": 41
+    "dias_sin_contacto": 46
    },
    {
     "caso": "21754",
     "asesor": "Nati",
     "importe": 173170.0,
     "ultimo_contacto": "2026-10-14",
-    "dias_sin_contacto": 29
+    "dias_sin_contacto": 34
    },
    {
     "caso": "14586",
     "asesor": "Jair",
     "importe": 170000.0,
     "ultimo_contacto": "2026-09-22",
-    "dias_sin_contacto": 51
+    "dias_sin_contacto": 56
    },
    {
     "caso": "15513",
     "asesor": "Jair",
     "importe": 107683.08,
     "ultimo_contacto": "2026-09-15",
-    "dias_sin_contacto": 58
+    "dias_sin_contacto": 63
    },
    {
     "caso": "16293",
     "asesor": "Jair",
     "importe": 63417.0,
     "ultimo_contacto": "2026-09-12",
-    "dias_sin_contacto": 61
+    "dias_sin_contacto": 66
    },
    {
     "caso": "16860",
     "asesor": "Nati",
     "importe": 56999.5,
     "ultimo_contacto": "2026-09-15",
-    "dias_sin_contacto": 58
+    "dias_sin_contacto": 63
    },
    {
     "caso": "16613",
     "asesor": "Alberto",
     "importe": 48986.8,
     "ultimo_contacto": "2026-09-14",
-    "dias_sin_contacto": 59
+    "dias_sin_contacto": 64
    },
    {
     "caso": "14284",
     "asesor": "Jair",
     "importe": 45041.36,
     "ultimo_contacto": "2026-10-15",
-    "dias_sin_contacto": 28
+    "dias_sin_contacto": 33
    },
    {
     "caso": "16126",
     "asesor": "Alberto",
     "importe": 37025.0,
     "ultimo_contacto": "2026-09-11",
-    "dias_sin_contacto": 62
+    "dias_sin_contacto": 67
    },
    {
     "caso": "16151",
     "asesor": "Nati",
     "importe": 35894.0,
     "ultimo_contacto": "2026-09-11",
-    "dias_sin_contacto": 62
+    "dias_sin_contacto": 67
    },
    {
     "caso": "15763",
     "asesor": "Jair",
     "importe": 32108.0,
     "ultimo_contacto": "2026-09-22",
-    "dias_sin_contacto": 51
+    "dias_sin_contacto": 56
    },
    {
     "caso": "16820",
     "asesor": "Jair",
     "importe": 30322.0,
     "ultimo_contacto": "2026-09-22",
-    "dias_sin_contacto": 51
+    "dias_sin_contacto": 56
    },
    {
     "caso": "15538",
     "asesor": "Alberto",
     "importe": 22722.0,
     "ultimo_contacto": "2026-09-09",
-    "dias_sin_contacto": 64
+    "dias_sin_contacto": 69
    },
    {
     "caso": "14219",
     "asesor": "Jair",
     "importe": 13312.42,
     "ultimo_contacto": "2026-09-10",
-    "dias_sin_contacto": 63
+    "dias_sin_contacto": 68
    },
    {
     "caso": "15542",
     "asesor": "Jair",
     "importe": 12166.9,
     "ultimo_contacto": "2026-09-15",
-    "dias_sin_contacto": 58
+    "dias_sin_contacto": 63
    },
    {
     "caso": "15163",
     "asesor": "Jair",
     "importe": 7966.31,
     "ultimo_contacto": "2026-09-10",
-    "dias_sin_contacto": 63
+    "dias_sin_contacto": 68
    }
   ]
  },
@@ -3639,7 +4641,7 @@
   "lineas_total_distinto_cant_x_precio": 9,
   "monto_diferencia_total": 7014.86,
   "lineas_periodo_distinto_fecha": 0,
-  "lineas_familia_otros": 95,
-  "leads_sin_periodo_valido": 572
+  "lineas_familia_otros": 115,
+  "leads_sin_periodo_valido": 657
  }
 }

@@ -91,6 +91,7 @@ footer .in{padding-block:20px;display:flex;justify-content:space-between;gap:12p
   <div class="row">
     <div class="views" role="group" aria-label="Vista">
       <button type="button" data-view="ventas" aria-pressed="true">Ventas por período</button>
+      <button type="button" data-view="leads" aria-pressed="false">Leads</button>
       <button type="button" data-view="seguimiento" aria-pressed="false">Cotizaciones y datos</button>
     </div>
   </div>
@@ -148,9 +149,25 @@ footer .in{padding-block:20px;display:flex;justify-content:space-between;gap:12p
     <div class="card"><h3>Provincias</h3><div class="chart"><canvas id="chProv"></canvas></div></div>
   </div>
 
-  <span class="sec-label">Leads</span>
-  <div class="grid k4" id="kLeads"></div>
-  <p class="note">Calculado desde la Base de Leads: contactado = resolución distinta de no contesta, casilla, apagado, duplicado o equivocado; vendido = ¿VENDIÓ? = SÍ.</p>
+</div>
+
+<!-- VISTA LEADS -->
+<div id="vLeads" hidden style="display:flex;flex-direction:column;gap:22px">
+  <div class="ptitle"><div><h2 id="lTitle">Leads</h2><div class="sub" id="lSub"></div></div></div>
+  <div class="grid k4" id="lKpis"></div>
+  <p class="ritmo-msg" id="lMsg" style="font-size:14.5px"></p>
+  <div class="grid c2">
+    <div class="card"><h3>Embudo del período</h3><div class="chart"><canvas id="chEmb"></canvas></div><p class="note">Cada barra es un subconjunto de la anterior. «Vendieron por gestión» excluye a los que ya habían comprado antes.</p></div>
+    <div class="card"><h3>Leads por tipo de contacto</h3><div class="chart"><canvas id="chTipo"></canvas></div></div>
+  </div>
+  <span class="sec-label">Tipo de contacto y venta</span>
+  <div class="card scroll"><table id="tTipo"></table><p class="note" style="margin-top:8px">Tipo de contacto según la columna RESOLUCIÓN. <b>Contacto efectivo</b> = habló por llamada, atendió y no le interesa, ya compró o conversó por WhatsApp 1 a 1. La campaña masiva de WhatsApp y los «no contesta» no cuentan como contacto. <b>Marcados vendió</b> = ¿VENDIÓ? = SÍ. <b>Compraron (cruce)</b> = el número del lead aparece en Detalle de Ventas desde la fecha del lead.</p></div>
+  <div class="card scroll"><h3>Por origen del lead</h3><table id="tLOrig"></table></div>
+  <div class="card scroll"><h3>Por asesor</h3><table id="tLAse"></table></div>
+  <div class="card scroll" id="lMesCard"><h3>Mes a mes</h3><table id="tLMes"></table></div>
+  <span class="sec-label">Calidad de los leads y de la carga</span>
+  <div class="grid k4" id="lCal"></div>
+  <p class="note">Porcentajes sobre los leads del período. Verde hasta 5%, amarillo hasta 20%, rojo por encima. Los teléfonos se usan solo para cruzar con ventas y no se publican.</p>
 </div>
 
 <!-- VISTA SEGUIMIENTO -->
@@ -201,13 +218,77 @@ footer .in{padding-block:20px;display:flex;justify-content:space-between;gap:12p
   // ---- Vistas
   document.querySelectorAll('.views button').forEach(b=>b.addEventListener('click',()=>{
     document.querySelectorAll('.views button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));
-    const v=b.dataset.view; $('vVentas').hidden=v!=='ventas'; $('vSeg').hidden=v!=='seguimiento'; $('periodRow').hidden=v!=='ventas';
+    const v=b.dataset.view; $('vVentas').hidden=v!=='ventas'; $('vLeads').hidden=v!=='leads'; $('vSeg').hidden=v!=='seguimiento'; $('periodRow').hidden=v==='seguimiento';
   }));
 
   const charts={}; const mk=(id,cfg)=>{charts[id]&&charts[id].destroy();charts[id]=new Chart($(id),cfg);};
   const merge=(ms,key)=>{const g={};ms.forEach(m=>m[key].forEach(x=>{const o=g[x.nombre]||(g[x.nombre]={nombre:x.nombre,venta:0,casos:0,unidades:0,lineas:0});o.venta+=x.venta;o.casos+=x.casos;o.unidades+=x.unidades;o.lineas+=x.lineas;}));return Object.values(g).sort((a,b)=>b.venta-a.venta);};
   const doughnut=(id,items)=>mk(id,{type:'doughnut',data:{labels:items.map(x=>x.nombre),datasets:[{data:items.map(x=>x.venta),backgroundColor:C.pal}]},options:{maintainAspectRatio:false,cutout:'58%',plugins:{legend:{position:'bottom',labels:{boxWidth:12}},tooltip:{callbacks:{label:c=>c.label+': '+S(c.raw)}}}}});
   const yK={y:{ticks:{callback:v=>K(v)}}};
+  // ---- Vista leads (sigue el período elegido)
+  const LD=d.leads_detalle||[];
+  const N0=n=>n.toLocaleString('es-PE');
+  const sumG=(arr,key)=>{const g={};arr.forEach(p=>p[key].forEach(x=>{const o=g[x.nombre]||(g[x.nombre]={nombre:x.nombre,leads:0,efectivos:0,vendidos:0,compraron:0});o.leads+=x.leads;o.efectivos+=x.efectivos;o.vendidos+=x.vendidos;o.compraron+=x.compraron;}));return Object.values(g);};
+  const pillQ=x=>`<span class="pill ${x<=.05?'ok':x<=.2?'warn':'bad'}">${P(x)}</span>`;
+  const NOEF=new Set(['Campaña WhatsApp masiva','No contesta','Sin gestionar','Otros','Duplicado']);
+  function renderLeads(ms,label){
+    const all=sel.size===M.length, ps=new Set(ms.map(m=>m.periodo));
+    const L=LD.filter(l=>all||ps.has(l.periodo));
+    $('lTitle').textContent='Leads · '+label;
+    const tot=k=>L.reduce((a,l)=>a+l[k],0);
+    const n=tot('leads'), gest=tot('gestionados'), ef=tot('efectivos'), vend=tot('vendidos'), comp=tot('compraron'), vc=tot('venta_cruce');
+    const tipos=sumG(L,'por_tipo'); const orden=['Habló por llamada','Atendió y no le interesa','Ya compró','WhatsApp 1 a 1','Campaña WhatsApp masiva','No contesta','Sin gestionar','Otros','Duplicado'];
+    tipos.sort((a,b)=>orden.indexOf(a.nombre)-orden.indexOf(b.nombre));
+    const ya=(tipos.find(t=>t.nombre==='Ya compró')||{vendidos:0,leads:0});
+    const vendGest=vend-ya.vendidos;
+    const sinG=(tipos.find(t=>t.nombre==='Sin gestionar')||{leads:0}).leads;
+    $('lSub').textContent=(all?'Todos los leads cargados, incluidos los de mayo y '+((LD.find(l=>l.periodo==='sin-fecha')||{leads:0}).leads)+' sin fecha válida':'Leads cargados en el período según la columna FECHA')+'.';
+    $('lKpis').innerHTML=kpi('Leads recibidos',N0(n),N0(sinG)+' todavía sin gestionar')
+      +kpi('Contacto efectivo',N0(ef),P(n?ef/n:null)+' de los recibidos',n?ef/n:0)
+      +kpi('Vendieron por gestión',N0(vendGest),'¿VENDIÓ? = SÍ, sin contar «Ya compró» ('+ya.vendidos+')')
+      +kpi('Conversión real',P(ef?vendGest/ef:null),'vendidos por gestión / contacto efectivo')
+      +kpi('Compraron según ventas',N0(comp),'número cruzado con Detalle de Ventas · '+K(vc));
+    const msg=[];
+    if(n) msg.push(`De <b>${N0(n)}</b> leads, se gestionó el <b>${P(gest/n)}</b> y hubo conversación real con el <b>${P(ef/n)}</b>.`);
+    if(vend) msg.push(`De los ${vend} marcados como vendidos, <b>${ya.vendidos}</b> son clientes que ya habían comprado: por gestión de leads se vendió a <b>${vendGest}</b>.`);
+    if(comp!==vend) msg.push(`Cruzando los números con las ventas, <b>${comp}</b> leads compraron (${K(vc)})${comp>vend?': hay ventas que no se marcaron en la Base de Leads':''}.`);
+    if(sinG/n>.2) msg.push(`<b>${N0(sinG)}</b> leads (${P(sinG/n)}) no tienen resolución cargada.`);
+    $('lMsg').innerHTML=msg.join(' ');
+
+    mk('chEmb',{type:'bar',data:{labels:['Recibidos · '+N0(n),'Gestionados · '+N0(gest),'Contacto efectivo · '+N0(ef),'Vendieron por gestión · '+N0(vendGest)],datasets:[{data:[n,gest,ef,vendGest],backgroundColor:['#1e3a8a','#2563eb','#06b6d4','#10b981'],borderRadius:6}]},options:{indexAxis:'y',maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>N0(c.raw)+' · '+P(n?c.raw/n:null)+' de los recibidos'}}}}});
+    const colT=t=>NOEF.has(t)?({'Campaña WhatsApp masiva':'#a5b4fc','No contesta':'#cbd5e1','Sin gestionar':'#f59e0b','Otros':'#94a3b8','Duplicado':'#64748b'})[t]:({'Habló por llamada':'#2563eb','Atendió y no le interesa':'#ec4899','Ya compró':'#10b981','WhatsApp 1 a 1':'#06b6d4'})[t];
+    mk('chTipo',{type:'doughnut',data:{labels:tipos.map(t=>t.nombre),datasets:[{data:tipos.map(t=>t.leads),backgroundColor:tipos.map(t=>colT(t.nombre))}]},options:{maintainAspectRatio:false,cutout:'55%',plugins:{legend:{position:'right',labels:{boxWidth:12}},tooltip:{callbacks:{label:c=>c.label+': '+N0(c.raw)+' · '+P(c.raw/n)}}}}});
+
+    $('tTipo').innerHTML='<thead><tr><th>Tipo de contacto</th><th>¿Contacto efectivo?</th><th class="r">Leads</th><th class="r">% del total</th><th class="r">Marcados vendió</th><th class="r">Compraron (cruce)</th><th class="r">Conversión</th></tr></thead><tbody>'
+      +tipos.map(t=>`<tr><td><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:${colT(t.nombre)};margin-right:8px"></span>${esc(t.nombre)}</td><td>${NOEF.has(t.nombre)?'<span class="pill bad">No</span>':'<span class="pill ok">Sí</span>'}</td><td class="r">${N0(t.leads)}</td><td class="r">${P(t.leads/n)}</td><td class="r">${t.vendidos}</td><td class="r">${t.compraron}</td><td class="r">${t.leads?P(t.vendidos/t.leads):'—'}</td></tr>`).join('')
+      +`<tr class="tot"><td>Total</td><td>${N0(ef)} efectivos</td><td class="r">${N0(n)}</td><td class="r">100%</td><td class="r">${vend}</td><td class="r">${comp}</td><td class="r">${P(n?vend/n:null)}</td></tr></tbody>`;
+
+    const tabla=(rows,col)=>`<thead><tr><th>${col}</th><th class="r">Leads</th><th class="r">Contacto efectivo</th><th class="r">Vendió</th><th class="r">Compraron (cruce)</th><th class="r">Conv. s/ efectivo</th></tr></thead><tbody>`
+      +rows.sort((a,b)=>b.leads-a.leads).map(o=>`<tr><td>${esc(o.nombre)}</td><td class="r">${N0(o.leads)}</td><td class="r">${N0(o.efectivos)} <span class="note" style="display:inline">(${P(o.leads?o.efectivos/o.leads:null)})</span></td><td class="r">${o.vendidos}</td><td class="r">${o.compraron}</td><td class="r">${o.efectivos?P(o.vendidos/o.efectivos):'—'}</td></tr>`).join('')+'</tbody>';
+    $('tLOrig').innerHTML=tabla(sumG(L,'por_origen'),'Origen');
+    $('tLAse').innerHTML=tabla(sumG(L,'por_asesor'),'Asesor');
+
+    const LM=L.filter(l=>l.periodo!=='sin-fecha');
+    $('lMesCard').hidden=LM.length<2;
+    const mesN=p=>{const m=M.find(x=>x.periodo===p);return m?short(m):(p==='2026-05'?'Mayo':p);};
+    $('tLMes').innerHTML='<thead><tr><th>Mes</th><th class="r">Leads</th><th class="r">Sin gestionar</th><th class="r">Contacto efectivo</th><th class="r">Vendieron (gestión)</th><th class="r">Ya compró</th><th class="r">Compraron (cruce)</th><th class="r">Venta cruzada</th></tr></thead><tbody>'
+      +LM.map(l=>{const t=k=>(l.por_tipo.find(x=>x.nombre===k)||{leads:0,vendidos:0});const y=t('Ya compró').vendidos;return `<tr><td>${mesN(l.periodo)}</td><td class="r">${N0(l.leads)}</td><td class="r">${N0(t('Sin gestionar').leads)}</td><td class="r">${N0(l.efectivos)} (${P(l.efectivos/l.leads)})</td><td class="r">${l.vendidos-y}</td><td class="r">${y}</td><td class="r">${l.compraron}</td><td class="r">${S(l.venta_cruce)}</td></tr>`;}).join('')+'</tbody>';
+
+    const q={};L.forEach(l=>Object.entries(l.calidad).forEach(([k,v])=>q[k]=(q[k]||0)+v));
+    q.numero_invalido=(q.numero_invalido||0)+(q.sin_numero||0);
+    const cq=(t,k,s)=>kpi(t,N0(q[k]||0),pillQ(n?(q[k]||0)/n:0)+' '+s);
+    $('lCal').innerHTML=cq('Sin resolución','sin_resolucion','leads sin RESOLUCIÓN cargada')
+      +cq('¿VENDIÓ? vacío','vendio_vacio','no se sabe si compró')
+      +cq('Número repetido','numero_repetido','mismo celular cargado más de una vez')
+      +cq('Número inválido o vacío','numero_invalido','no es un celular de 9 dígitos')
+      +cq('Sin interés registrado','sin_interes','columna INTERÉS vacía')
+      +cq('PERÍODO con error','periodo_con_error','vacío, #REF! o #NUM! en la planilla')
+      +cq('Fecha cargada como texto','fecha_texto','se corrigió al leerla')
+      +cq('Compró y no está marcado','compro_sin_marcar','aparece en ventas pero ¿VENDIÓ? ≠ SÍ')
+      +cq('Marcado vendido sin compra','marcado_sin_compra','¿VENDIÓ? = SÍ y su número no está en ventas')
+      +cq('Vendido sin N° de caso','vendido_sin_caso','¿VENDIÓ? = SÍ sin N° CASO VENTA');
+  }
+
 
   function render(){
     chips.querySelectorAll('.chip').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.i==='all'?sel.size===M.length:sel.has(+b.dataset.i)&&sel.size<M.length)));
@@ -260,10 +341,7 @@ footer .in{padding-block:20px;display:flex;justify-content:space-between;gap:12p
     const prov=merge(ms,'provincias').slice(0,10);
     mk('chProv',{type:'bar',data:{labels:prov.map(p=>p.nombre),datasets:[{label:'Venta',data:prov.map(p=>p.venta),backgroundColor:C.cyan,borderRadius:4}]},options:{indexAxis:'y',maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>S(c.raw)}}},scales:{x:{ticks:{callback:v=>K(v)}}}}});
 
-    // Leads
-    const ps=new Set(ms.map(m=>m.periodo)); const L=d.leads.filter(l=>ps.has(l.periodo));
-    const g=L.reduce((a,l)=>a+l.gestionados,0), c=L.reduce((a,l)=>a+l.contactados,0), v=L.reduce((a,l)=>a+l.vendidos,0), sp=L.reduce((a,l)=>a+l.sin_periodo,0);
-    $('kLeads').innerHTML=kpi('Leads gestionados',g.toLocaleString('es-PE'),sp?sp+' sin período válido en la planilla':'')+kpi('Contactados',c.toLocaleString('es-PE'),P(c/g)+' de los gestionados')+kpi('Vendidos',String(v),'marcados con ¿VENDIÓ? = SÍ')+kpi('Conversión',P(c?v/c:null),'vendidos sobre contactados');
+    renderLeads(ms, label);
   }
   render();
 
