@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-17T09:29-05:00",
+ "actualizado": "2026-11-17T10:06-05:00",
  "datos_hasta": "2026-11-16",
  "moneda": "PEN",
  "acumulado": {
@@ -3528,10 +3528,10 @@
   },
   {
    "periodo": "2026-11",
-   "gestionados": 250,
+   "gestionados": 333,
    "contactados": 2,
    "vendidos": 0,
-   "sin_periodo": 250,
+   "sin_periodo": 333,
    "conversion_real": 0.0,
    "tablero_gestionados": 0.0,
    "tablero_contactados": 0.0,
@@ -4320,7 +4320,7 @@
   },
   {
    "periodo": "2026-11",
-   "leads": 250,
+   "leads": 333,
    "gestionados": 8,
    "efectivos": 2,
    "vendidos": 0,
@@ -4343,7 +4343,7 @@
     },
     {
      "nombre": "Sin gestionar",
-     "leads": 242,
+     "leads": 325,
      "efectivos": 0,
      "vendidos": 0,
      "compraron": 3
@@ -4352,7 +4352,7 @@
    "por_origen": [
     {
      "nombre": "Medialabs · Termas",
-     "leads": 219,
+     "leads": 302,
      "efectivos": 2,
      "vendidos": 0,
      "compraron": 2
@@ -4375,21 +4375,21 @@
    "por_asesor": [
     {
      "nombre": "Alberto",
-     "leads": 94,
+     "leads": 120,
      "efectivos": 0,
      "vendidos": 0,
      "compraron": 0
     },
     {
      "nombre": "Facundo",
-     "leads": 85,
+     "leads": 112,
      "efectivos": 2,
      "vendidos": 0,
      "compraron": 3
     },
     {
      "nombre": "Jair",
-     "leads": 71,
+     "leads": 101,
      "efectivos": 0,
      "vendidos": 0,
      "compraron": 0
@@ -4397,15 +4397,15 @@
    ],
    "calidad": {
     "sin_numero": 0,
-    "numero_invalido": 0,
+    "numero_invalido": 1,
     "numero_repetido": 8,
     "sin_origen": 0,
     "sin_asesor": 0,
-    "sin_resolucion": 242,
-    "vendio_vacio": 248,
+    "sin_resolucion": 325,
+    "vendio_vacio": 331,
     "sin_interes": 0,
     "fecha_texto": 0,
-    "periodo_con_error": 250,
+    "periodo_con_error": 333,
     "vendido_sin_caso": 0,
     "compro_sin_marcar": 3,
     "marcado_sin_compra": 0
@@ -4631,6 +4631,6 @@
   "monto_diferencia_total": 7014.86,
   "lineas_periodo_distinto_fecha": 0,
   "lineas_familia_otros": 115,
-  "leads_sin_periodo_valido": 650
+  "leads_sin_periodo_valido": 733
  }
 }
