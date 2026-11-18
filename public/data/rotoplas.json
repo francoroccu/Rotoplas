@@ -1,13 +1,13 @@
 {
- "actualizado": "2026-11-17T10:06-05:00",
- "datos_hasta": "2026-11-16",
+ "actualizado": "2026-11-18T05:52-05:00",
+ "datos_hasta": "2026-11-17",
  "moneda": "PEN",
  "acumulado": {
-  "venta": 1826775.2,
+  "venta": 1866828.1,
   "objetivo": 2562830.0,
-  "cumplimiento": 0.7128,
-  "casos": 893,
-  "unidades": 1657.0
+  "cumplimiento": 0.7284,
+  "casos": 898,
+  "unidades": 1669.0
  },
  "meses": [
   {
@@ -2945,14 +2945,14 @@
   {
    "periodo": "2026-11",
    "nombre": "Noviembre 2026",
-   "venta": 266095.61,
+   "venta": 306148.51,
    "objetivo": 545472.0,
-   "cumplimiento": 0.4878,
-   "casos": 153,
-   "unidades": 244.0,
-   "ticket": 1739.19,
-   "venta_whatsapp": 251115.53,
-   "venta_llamada": 14980.08,
+   "cumplimiento": 0.5613,
+   "casos": 158,
+   "unidades": 256.0,
+   "ticket": 1937.65,
+   "venta_whatsapp": 290489.43,
+   "venta_llamada": 15659.08,
    "semanas": [
     {
      "semana": 1,
@@ -2966,8 +2966,8 @@
     },
     {
      "semana": 3,
-     "venta": 10648.18,
-     "casos": 10
+     "venta": 50701.08,
+     "casos": 15
     }
    ],
    "dias": [
@@ -3035,35 +3035,47 @@
      "fecha": "2026-11-16",
      "venta": 10648.18,
      "casos": 10
+    },
+    {
+     "fecha": "2026-11-17",
+     "venta": 40052.9,
+     "casos": 5
     }
    ],
    "asesores": [
     {
      "nombre": "Jair",
-     "venta": 139883.12,
-     "lineas": 73,
-     "unidades": 77.0,
-     "casos": 50,
+     "venta": 138322.12,
+     "lineas": 74,
+     "unidades": 78.0,
+     "casos": 51,
      "meta": 181824.0
     },
     {
      "nombre": "Alberto",
-     "venta": 71868.48,
-     "lineas": 57,
-     "unidades": 80.0,
-     "casos": 42,
+     "venta": 107351.38,
+     "lineas": 63,
+     "unidades": 86.0,
+     "casos": 43,
      "meta": 181824.0
     },
     {
      "nombre": "Facundo",
-     "venta": 54344.01,
-     "lineas": 77,
-     "unidades": 87.0,
-     "casos": 63,
+     "venta": 60475.01,
+     "lineas": 80,
+     "unidades": 92.0,
+     "casos": 66,
      "meta": 181824.0
     }
    ],
    "familias": [
+    {
+     "nombre": "Tanque industrial",
+     "venta": 106695.0,
+     "lineas": 5,
+     "unidades": 6.0,
+     "casos": 5
+    },
     {
      "nombre": "Tanque",
      "venta": 101182.86,
@@ -3072,18 +3084,11 @@
      "casos": 71
     },
     {
-     "nombre": "Tanque industrial",
-     "venta": 72909.5,
-     "lineas": 4,
-     "unidades": 5.0,
-     "casos": 4
-    },
-    {
      "nombre": "Bombas",
-     "venta": 31812.74,
-     "lineas": 35,
-     "unidades": 38.0,
-     "casos": 35
+     "venta": 32387.74,
+     "lineas": 36,
+     "unidades": 39.0,
+     "casos": 36
     },
     {
      "nombre": "Cisterna",
@@ -3107,6 +3112,13 @@
      "casos": 24
     },
     {
+     "nombre": "Purificadores",
+     "venta": 6350.0,
+     "lineas": 22,
+     "unidades": 30.0,
+     "casos": 22
+    },
+    {
      "nombre": "Tanque pisco y vino",
      "venta": 5927.73,
      "lineas": 3,
@@ -3114,25 +3126,18 @@
      "casos": 2
     },
     {
+     "nombre": "Accesorios industriales",
+     "venta": 5235.58,
+     "lineas": 13,
+     "unidades": 18.0,
+     "casos": 4
+    },
+    {
      "nombre": "Termas",
      "venta": 5012.0,
      "lineas": 7,
      "unidades": 8.0,
      "casos": 7
-    },
-    {
-     "nombre": "Accesorios industriales",
-     "venta": 3538.18,
-     "lineas": 8,
-     "unidades": 13.0,
-     "casos": 3
-    },
-    {
-     "nombre": "Purificadores",
-     "venta": 2355.0,
-     "lineas": 19,
-     "unidades": 25.0,
-     "casos": 19
     },
     {
      "nombre": "Tanque/cisterna",
@@ -3153,6 +3158,13 @@
     {
      "nombre": "Tanque industrial de agua 25,000 L sin accesorios",
      "venta": 34126.76,
+     "lineas": 1,
+     "unidades": 1.0,
+     "casos": 1
+    },
+    {
+     "nombre": "TANQUE INDUSTRIAL PARA AGUA 25,000L SIN ACCESORIOS",
+     "venta": 33785.5,
      "lineas": 1,
      "unidades": 1.0,
      "casos": 1
@@ -3242,27 +3254,20 @@
      "casos": 4
     },
     {
-     "nombre": "Cisterna de agua Garantía de por vida* 2000 Litros",
-     "venta": 4418.0,
-     "lineas": 2,
-     "unidades": 2.0,
-     "casos": 2
-    },
-    {
      "nombre": "Bomba Inteligente 1/4 HP",
-     "venta": 4398.56,
-     "lineas": 7,
-     "unidades": 8.0,
-     "casos": 7
+     "venta": 4973.56,
+     "lineas": 8,
+     "unidades": 9.0,
+     "casos": 8
     }
    ],
    "provincias": [
     {
      "nombre": "Lima",
-     "venta": 234470.88,
-     "lineas": 177,
-     "unidades": 199.0,
-     "casos": 131
+     "venta": 270528.78,
+     "lineas": 184,
+     "unidades": 206.0,
+     "casos": 133
     },
     {
      "nombre": "Huanuco",
@@ -3283,6 +3288,13 @@
      "venta": 5905.28,
      "lineas": 3,
      "unidades": 9.0,
+     "casos": 2
+    },
+    {
+     "nombre": "Cajamarca",
+     "venta": 3526.0,
+     "lineas": 2,
+     "unidades": 4.0,
      "casos": 2
     },
     {
@@ -3314,15 +3326,8 @@
      "casos": 2
     },
     {
-     "nombre": "Sin dato",
-     "venta": 768.0,
-     "lineas": 2,
-     "unidades": 2.0,
-     "casos": 2
-    },
-    {
-     "nombre": "Tacna",
-     "venta": 740.0,
+     "nombre": "Chincha",
+     "venta": 949.0,
      "lineas": 1,
      "unidades": 1.0,
      "casos": 1
@@ -3331,10 +3336,10 @@
    "origen": [
     {
      "nombre": "Whatsapp entrante",
-     "venta": 250541.33,
-     "lineas": 191,
-     "unidades": 221.0,
-     "casos": 143
+     "venta": 290594.23,
+     "lineas": 201,
+     "unidades": 233.0,
+     "casos": 148
     },
     {
      "nombre": "Llamada entrante",
@@ -3353,30 +3358,30 @@
    ],
    "pago": [
     {
-     "nombre": "Pagina web",
-     "venta": 146059.33,
-     "lineas": 174,
-     "unidades": 205.0,
-     "casos": 145
+     "nombre": "Transferencia",
+     "venta": 158366.18,
+     "lineas": 40,
+     "unidades": 48.0,
+     "casos": 12
     },
     {
-     "nombre": "Transferencia",
-     "venta": 120036.28,
-     "lineas": 33,
-     "unidades": 39.0,
-     "casos": 10
+     "nombre": "Pagina web",
+     "venta": 147782.33,
+     "lineas": 177,
+     "unidades": 208.0,
+     "casos": 148
     }
    ],
    "tramos_ticket": [
     {
      "tramo": "< 500",
-     "casos": 35,
-     "venta": 5678.9
+     "casos": 36,
+     "venta": 5877.9
     },
     {
      "tramo": "500–1.000",
-     "casos": 69,
-     "venta": 52785.15
+     "casos": 71,
+     "venta": 54309.15
     },
     {
      "tramo": "1.000–2.000",
@@ -3385,8 +3390,8 @@
     },
     {
      "tramo": "2.000–5.000",
-     "casos": 11,
-     "venta": 31630.98
+     "casos": 12,
+     "venta": 34477.98
     },
     {
      "tramo": "5.000–10.000",
@@ -3395,11 +3400,18 @@
     },
     {
      "tramo": "> 10.000",
-     "casos": 5,
-     "venta": 109150.48
+     "casos": 6,
+     "venta": 144633.38
     }
    ],
    "ventas_grandes": [
+    {
+     "caso": "27659",
+     "venta": 35482.9,
+     "provincia": "Lima",
+     "asesor": "Alberto",
+     "familia": "Tanque industrial"
+    },
     {
      "caso": "28294",
      "venta": 35017.56,
@@ -3448,13 +3460,6 @@
      "provincia": "Huanuco",
      "asesor": "Jair",
      "familia": "Biodigestor"
-    },
-    {
-     "caso": "18580",
-     "venta": 5667.71,
-     "provincia": "Lima",
-     "asesor": "Alberto",
-     "familia": "Tanque industrial"
     }
    ]
   }
@@ -3529,13 +3534,13 @@
   {
    "periodo": "2026-11",
    "gestionados": 333,
-   "contactados": 2,
+   "contactados": 6,
    "vendidos": 0,
    "sin_periodo": 333,
    "conversion_real": 0.0,
    "tablero_gestionados": 0.0,
    "tablero_contactados": 0.0,
-   "tablero_convertidos": 200.0
+   "tablero_convertidos": 210.0
   },
   {
    "periodo": "sin-fecha",
@@ -4321,29 +4326,36 @@
   {
    "periodo": "2026-11",
    "leads": 333,
-   "gestionados": 8,
-   "efectivos": 2,
+   "gestionados": 31,
+   "efectivos": 6,
    "vendidos": 0,
-   "compraron": 3,
-   "venta_cruce": 832.0,
+   "compraron": 4,
+   "venta_cruce": 3679.0,
    "por_tipo": [
     {
      "nombre": "Habló por llamada",
-     "leads": 2,
-     "efectivos": 2,
+     "leads": 5,
+     "efectivos": 5,
+     "vendidos": 0,
+     "compraron": 0
+    },
+    {
+     "nombre": "Atendió y no le interesa",
+     "leads": 1,
+     "efectivos": 1,
      "vendidos": 0,
      "compraron": 0
     },
     {
      "nombre": "No contesta",
-     "leads": 6,
+     "leads": 25,
      "efectivos": 0,
      "vendidos": 0,
-     "compraron": 0
+     "compraron": 1
     },
     {
      "nombre": "Sin gestionar",
-     "leads": 325,
+     "leads": 302,
      "efectivos": 0,
      "vendidos": 0,
      "compraron": 3
@@ -4353,9 +4365,9 @@
     {
      "nombre": "Medialabs · Termas",
      "leads": 302,
-     "efectivos": 2,
+     "efectivos": 6,
      "vendidos": 0,
-     "compraron": 2
+     "compraron": 3
     },
     {
      "nombre": "Google · Mix",
@@ -4383,9 +4395,9 @@
     {
      "nombre": "Facundo",
      "leads": 112,
-     "efectivos": 2,
+     "efectivos": 6,
      "vendidos": 0,
-     "compraron": 3
+     "compraron": 4
     },
     {
      "nombre": "Jair",
@@ -4401,13 +4413,13 @@
     "numero_repetido": 8,
     "sin_origen": 0,
     "sin_asesor": 0,
-    "sin_resolucion": 325,
-    "vendio_vacio": 331,
+    "sin_resolucion": 302,
+    "vendio_vacio": 309,
     "sin_interes": 0,
     "fecha_texto": 0,
     "periodo_con_error": 333,
     "vendido_sin_caso": 0,
-    "compro_sin_marcar": 3,
+    "compro_sin_marcar": 4,
     "marcado_sin_compra": 0
    }
   },
@@ -4509,119 +4521,119 @@
     "asesor": "Alberto",
     "importe": 214082.76,
     "ultimo_contacto": "2026-09-08",
-    "dias_sin_contacto": 70
+    "dias_sin_contacto": 71
    },
    {
     "caso": "15507",
     "asesor": "Jair",
     "importe": 173784.0,
     "ultimo_contacto": "2026-10-02",
-    "dias_sin_contacto": 46
+    "dias_sin_contacto": 47
    },
    {
     "caso": "21754",
     "asesor": "Nati",
     "importe": 173170.0,
     "ultimo_contacto": "2026-10-14",
-    "dias_sin_contacto": 34
+    "dias_sin_contacto": 35
    },
    {
     "caso": "14586",
     "asesor": "Jair",
     "importe": 170000.0,
     "ultimo_contacto": "2026-09-22",
-    "dias_sin_contacto": 56
+    "dias_sin_contacto": 57
    },
    {
     "caso": "15513",
     "asesor": "Jair",
     "importe": 107683.08,
     "ultimo_contacto": "2026-09-15",
-    "dias_sin_contacto": 63
+    "dias_sin_contacto": 64
    },
    {
     "caso": "16293",
     "asesor": "Jair",
     "importe": 63417.0,
     "ultimo_contacto": "2026-09-12",
-    "dias_sin_contacto": 66
+    "dias_sin_contacto": 67
    },
    {
     "caso": "16860",
     "asesor": "Nati",
     "importe": 56999.5,
     "ultimo_contacto": "2026-09-15",
-    "dias_sin_contacto": 63
+    "dias_sin_contacto": 64
    },
    {
     "caso": "16613",
     "asesor": "Alberto",
     "importe": 48986.8,
     "ultimo_contacto": "2026-09-14",
-    "dias_sin_contacto": 64
+    "dias_sin_contacto": 65
    },
    {
     "caso": "14284",
     "asesor": "Jair",
     "importe": 45041.36,
     "ultimo_contacto": "2026-10-15",
-    "dias_sin_contacto": 33
+    "dias_sin_contacto": 34
    },
    {
     "caso": "16126",
     "asesor": "Alberto",
     "importe": 37025.0,
     "ultimo_contacto": "2026-09-11",
-    "dias_sin_contacto": 67
+    "dias_sin_contacto": 68
    },
    {
     "caso": "16151",
     "asesor": "Nati",
     "importe": 35894.0,
     "ultimo_contacto": "2026-09-11",
-    "dias_sin_contacto": 67
+    "dias_sin_contacto": 68
    },
    {
     "caso": "15763",
     "asesor": "Jair",
     "importe": 32108.0,
     "ultimo_contacto": "2026-09-22",
-    "dias_sin_contacto": 56
+    "dias_sin_contacto": 57
    },
    {
     "caso": "16820",
     "asesor": "Jair",
     "importe": 30322.0,
     "ultimo_contacto": "2026-09-22",
-    "dias_sin_contacto": 56
+    "dias_sin_contacto": 57
    },
    {
     "caso": "15538",
     "asesor": "Alberto",
     "importe": 22722.0,
     "ultimo_contacto": "2026-09-09",
-    "dias_sin_contacto": 69
+    "dias_sin_contacto": 70
    },
    {
     "caso": "14219",
     "asesor": "Jair",
     "importe": 13312.42,
     "ultimo_contacto": "2026-09-10",
-    "dias_sin_contacto": 68
+    "dias_sin_contacto": 69
    },
    {
     "caso": "15542",
     "asesor": "Jair",
     "importe": 12166.9,
     "ultimo_contacto": "2026-09-15",
-    "dias_sin_contacto": 63
+    "dias_sin_contacto": 64
    },
    {
     "caso": "15163",
     "asesor": "Jair",
     "importe": 7966.31,
     "ultimo_contacto": "2026-09-10",
-    "dias_sin_contacto": 68
+    "dias_sin_contacto": 69
    }
   ]
  },
