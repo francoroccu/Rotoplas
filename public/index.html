@@ -378,8 +378,8 @@ footer .in{padding-block:20px;display:flex;justify-content:space-between;gap:12p
     $('rKpis').innerHTML=
       kpi('Venta al día '+N,K(hoy.v),hoy.c+' casos · meta '+K(cur.objetivo),pct)+
       kpi('Ritmo esperado',P(esperado),el+' de '+tot+' días hábiles (lun a sáb)',esperado)+
-      kpi('Necesita por día',necesita==null?'—':K(necesita),'vs '+K(porDia)+' por día hasta hoy')+
-      kpi('Cierre si sigue igual',K(proy),P(proy/cur.objetivo)+' de la meta',proy/cur.objetivo);
+      kpi('Necesita por día',necesita==null?'—':K(necesita),necesita==null?'no quedan días hábiles':'Lo que falta para la meta ('+K(falta)+') repartido en los '+quedan+' días hábiles que quedan. Hasta hoy el promedio es '+K(porDia)+' por día hábil.')+
+      kpi('Cierre si sigue igual',K(proy),P(proy/cur.objetivo)+' de la meta. Proyección: promedio por día hábil hasta hoy ('+K(porDia)+') × los '+tot+' días hábiles del mes.',proy/cur.objetivo);
 
     // Tabla: mismo corte en cada mes
     $('rTabTitle').textContent='Mismo corte (día 1 al '+N+') en cada mes';
