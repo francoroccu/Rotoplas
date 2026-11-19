@@ -331,7 +331,7 @@ footer .in{padding-block:20px;display:flex;justify-content:space-between;gap:12p
       +ases.map(a=>`<tr><td>${esc(a.nombre)}</td><td class="r">${a.meta?S(a.meta):'—'}</td><td class="r">${S(a.venta)}</td><td class="r">${est(a.meta?a.vMeta/a.meta:null)}</td><td class="r">${P(a.venta/venta)}</td><td class="r">${a.casos}</td><td class="r">${Math.round(a.unidades)}</td><td class="r">${a.casos?S(a.venta/a.casos):'—'}</td></tr>`).join('')
       +`<tr class="tot"><td>Total</td><td class="r">${metaT?S(metaT):'—'}</td><td class="r">${S(venta)}</td><td class="r">${metaT?P(vMetaT/metaT):'—'}</td><td class="r">100%</td><td class="r">${casos}</td><td class="r">${Math.round(uni)}</td><td class="r">${S(venta/casos)}</td></tr></tbody>`;
     {const per=d.datos_hasta.slice(0,7);let txt='Meta individual según el bloque «Ventas por operador» de cada pestaña Detalle del mes en la planilla. Estado como en la planilla: cumplida desde 100%, en camino desde 80%. «% de la venta» = parte de la venta del período que hizo cada asesor.';
-      if(ms.some(m=>m.periodo===per)){const y=+per.slice(0,4),mo=+per.slice(5,7),N=+d.datos_hasta.slice(8),nd=new Date(y,mo,0).getDate();let t=0,e=0;for(let k=1;k<=nd;k++)if(new Date(y,mo-1,k).getDay()!==0){t++;if(k<=N)e++;}txt+=` ${short(M.at(-1))} está en curso: al día ${N} el ritmo parejo es ${P(e/t)} de la meta (${e} de ${t} días hábiles).`;}
+      if(ms.some(m=>m.periodo===per)){const y=+per.slice(0,4),mo=+per.slice(5,7),N=+d.datos_hasta.slice(8),nd=new Date(y,mo,0).getDate();let t=0,e=0;for(let k=1;k<=nd;k++)if(new Date(y,mo-1,k).getDay()!==0){t++;if(k<=N)e++;}txt+=` ${short(M.at(-1))} está en curso: al día ${N} el ritmo parejo es ${P(e/t)} de la meta (${e} de ${t} días hábiles, de lunes a sábado; no se descuentan feriados).`;}
       $('aseNote').textContent=txt;}
 
     // Producto
@@ -372,12 +372,12 @@ footer .in{padding-block:20px;display:flex;justify-content:space-between;gap:12p
     $('ritmo').hidden=false; $('ritmo').classList.add('s-'+est[0]);
     $('rTitle').textContent=mesTxt+' al día '+N+': '+P(pct)+' de la meta';
     $('rSem').className='sem '+est[0]; $('rSem').textContent=est[1];
-    $('rMsg').innerHTML=`Pasaron <b>${el} de ${tot} días hábiles</b> (${P(esperado)} del mes) y la venta va en <b>${P(pct)}</b> de la meta. `+
+    $('rMsg').innerHTML=`Pasaron <b>${el} de ${tot} días hábiles</b> (lunes a sábado, sin descontar feriados; ${P(esperado)} del mes) y la venta va en <b>${P(pct)}</b> de la meta. `+
       (pct>=1?'La meta del mes ya está cumplida.':`Para llegar faltan <b>${K(falta)}</b>: unos <b>${K(necesita)} por día hábil</b>, contra ${K(porDia)} por día que lleva el mes.`)+
       (promPrev?` Comparado con los meses anteriores al mismo día, va <b>${(hoy.v/promPrev).toLocaleString('es-PE',{maximumFractionDigits:1})} veces</b> el promedio.`:'');
     $('rKpis').innerHTML=
       kpi('Venta al día '+N,K(hoy.v),hoy.c+' casos · meta '+K(cur.objetivo),pct)+
-      kpi('Ritmo esperado',P(esperado),el+' de '+tot+' días hábiles',esperado)+
+      kpi('Ritmo esperado',P(esperado),el+' de '+tot+' días hábiles (lun a sáb)',esperado)+
       kpi('Necesita por día',necesita==null?'—':K(necesita),'vs '+K(porDia)+' por día hasta hoy')+
       kpi('Cierre si sigue igual',K(proy),P(proy/cur.objetivo)+' de la meta',proy/cur.objetivo);
 
