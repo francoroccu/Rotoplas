@@ -125,7 +125,7 @@ footer .in{padding-block:20px;display:flex;justify-content:space-between;gap:12p
   <div class="card" id="cmpCard"><h3 id="cmpTitle">Mes a mes</h3><div class="grid c2"><div class="chart"><canvas id="chCmp"></canvas></div><div class="scroll"><table id="tCmp"></table></div></div></div>
 
   <div class="grid c2">
-    <div class="card"><h3 id="dayTitle">Venta diaria</h3><div class="chart"><canvas id="chDia"></canvas></div><p class="note">En celeste, los lunes.</p></div>
+    <div class="card"><h3 id="dayTitle">Venta diaria</h3><div class="chart"><canvas id="chDia"></canvas></div><p class="note">En celeste, los lunes. Arriba de cada barra: venta en miles de S/ y, debajo, cantidad de casos.</p></div>
     <div class="card"><h3 id="semTitle">Venta por semana</h3><div class="chart"><canvas id="chSem"></canvas></div></div>
   </div>
 
@@ -192,6 +192,16 @@ footer .in{padding-block:20px;display:flex;justify-content:space-between;gap:12p
   const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   const C={blue:'#2563eb',cyan:'#06b6d4',orange:'#f59e0b',pal:['#2563eb','#06b6d4','#f59e0b','#10b981','#8b5cf6','#64748b','#ec4899','#0ea5e9']};
   Chart.defaults.font.family='"Open Sans",Arial,sans-serif';Chart.defaults.color='#4a5568';
+  // Etiquetas fijas sobre cada barra (valor y casos), sin pasar el cursor
+  Chart.register({id:'vals',afterDatasetsDraw(ch,a,o){if(!o||!o.fmt)return;const ctx=ch.ctx,hz=ch.options.indexAxis==='y',sz=o.size||11;
+    ch.data.datasets.forEach((ds,di)=>{const me=ch.getDatasetMeta(di);if(me.type!=='bar'||me.hidden)return;
+      me.data.forEach((el,i)=>{const v=ds.data[i];if(v==null||v===0)return;if((hz?el.height:el.width)<(o.min||12))return;
+        const L=[].concat(o.fmt(v,i,di));ctx.save();ctx.fillStyle='#1a2332';
+        if(hz){ctx.font='600 '+sz+'px "Open Sans",Arial';ctx.textAlign='left';ctx.textBaseline='middle';ctx.fillText(L.join(' · '),el.x+6,el.y);}
+        else{ctx.textAlign='center';ctx.textBaseline='bottom';for(let k=0;k<L.length;k++){const t=L[L.length-1-k];ctx.font=(L.length-1-k===0?'700 ':'400 ')+(L.length-1-k===0?sz:sz-1)+'px "Open Sans",Arial';ctx.fillStyle=L.length-1-k===0?'#1a2332':'#4a5568';ctx.fillText(t,el.x,el.y-4-k*(sz+2));}}
+        ctx.restore();});});}});
+  const cs=n=>n===1?'1 caso':n+' casos';
+  const Kc=n=>n>=1000?(n/1000).toLocaleString('es-PE',{maximumFractionDigits:n>=1e4?0:1})+'k':String(Math.round(n));
   let d;
   try{d=await (await fetch('data/rotoplas.json',{cache:'no-store'})).json();}catch(e){$('pTitle').textContent='No se pudieron cargar los datos.';return;}
   const fmtDT=s=>new Date(s).toLocaleString('es-PE',{dateStyle:'medium',timeStyle:'short',timeZone:'America/Lima'});
@@ -221,9 +231,10 @@ footer .in{padding-block:20px;display:flex;justify-content:space-between;gap:12p
     const v=b.dataset.view; $('vVentas').hidden=v!=='ventas'; $('vLeads').hidden=v!=='leads'; $('vSeg').hidden=v!=='seguimiento'; $('periodRow').hidden=v==='seguimiento';
   }));
 
-  const charts={}; const mk=(id,cfg)=>{charts[id]&&charts[id].destroy();charts[id]=new Chart($(id),cfg);};
+  const charts={}, VALS={};
+  const mk=(id,cfg)=>{charts[id]&&charts[id].destroy();const v=VALS[id];if(v){cfg.options=cfg.options||{};cfg.options.plugins=cfg.options.plugins||{};cfg.options.plugins.vals=v;cfg.options.layout={padding:cfg.options.indexAxis==='y'?{right:v.pad||150}:{top:v.pad||36}};delete VALS[id];}charts[id]=new Chart($(id),cfg);};
   const merge=(ms,key)=>{const g={};ms.forEach(m=>m[key].forEach(x=>{const o=g[x.nombre]||(g[x.nombre]={nombre:x.nombre,venta:0,casos:0,unidades:0,lineas:0});o.venta+=x.venta;o.casos+=x.casos;o.unidades+=x.unidades;o.lineas+=x.lineas;}));return Object.values(g).sort((a,b)=>b.venta-a.venta);};
-  const doughnut=(id,items)=>mk(id,{type:'doughnut',data:{labels:items.map(x=>x.nombre),datasets:[{data:items.map(x=>x.venta),backgroundColor:C.pal}]},options:{maintainAspectRatio:false,cutout:'58%',plugins:{legend:{position:'bottom',labels:{boxWidth:12}},tooltip:{callbacks:{label:c=>c.label+': '+S(c.raw)}}}}});
+  const doughnut=(id,items)=>{const tt=items.reduce((a,x)=>a+x.venta,0);return mk(id,{type:'doughnut',data:{labels:items.map(x=>x.nombre+' · '+K(x.venta)+' ('+P(x.venta/tt)+') · '+cs(x.casos)),datasets:[{data:items.map(x=>x.venta),backgroundColor:C.pal}]},options:{maintainAspectRatio:false,cutout:'58%',plugins:{legend:{position:'bottom',labels:{boxWidth:12}},tooltip:{callbacks:{label:c=>c.label+': '+S(c.raw)}}}}})};
   const yK={y:{ticks:{callback:v=>K(v)}}};
   // ---- Vista leads (sigue el período elegido)
   const LD=d.leads_detalle||[];
@@ -255,9 +266,10 @@ footer .in{padding-block:20px;display:flex;justify-content:space-between;gap:12p
     if(sinG/n>.2) msg.push(`<b>${N0(sinG)}</b> leads (${P(sinG/n)}) no tienen resolución cargada.`);
     $('lMsg').innerHTML=msg.join(' ');
 
+    VALS.chEmb={fmt:v=>N0(v)+' · '+P(n?v/n:null),pad:110};
     mk('chEmb',{type:'bar',data:{labels:['Recibidos · '+N0(n),'Gestionados · '+N0(gest),'Contacto efectivo · '+N0(ef),'Vendieron por gestión · '+N0(vendGest)],datasets:[{data:[n,gest,ef,vendGest],backgroundColor:['#1e3a8a','#2563eb','#06b6d4','#10b981'],borderRadius:6}]},options:{indexAxis:'y',maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>N0(c.raw)+' · '+P(n?c.raw/n:null)+' de los recibidos'}}}}});
     const colT=t=>NOEF.has(t)?({'Campaña WhatsApp masiva':'#a5b4fc','No contesta':'#cbd5e1','Sin gestionar':'#f59e0b','Otros':'#94a3b8','Duplicado':'#64748b'})[t]:({'Habló por llamada':'#2563eb','Atendió y no le interesa':'#ec4899','Ya compró':'#10b981','WhatsApp 1 a 1':'#06b6d4'})[t];
-    mk('chTipo',{type:'doughnut',data:{labels:tipos.map(t=>t.nombre),datasets:[{data:tipos.map(t=>t.leads),backgroundColor:tipos.map(t=>colT(t.nombre))}]},options:{maintainAspectRatio:false,cutout:'55%',plugins:{legend:{position:'right',labels:{boxWidth:12}},tooltip:{callbacks:{label:c=>c.label+': '+N0(c.raw)+' · '+P(c.raw/n)}}}}});
+    mk('chTipo',{type:'doughnut',data:{labels:tipos.map(t=>t.nombre+' · '+N0(t.leads)+' ('+P(n?t.leads/n:null)+')'),datasets:[{data:tipos.map(t=>t.leads),backgroundColor:tipos.map(t=>colT(t.nombre))}]},options:{maintainAspectRatio:false,cutout:'55%',plugins:{legend:{position:'right',labels:{boxWidth:12}},tooltip:{callbacks:{label:c=>c.label+': '+N0(c.raw)+' · '+P(c.raw/n)}}}}});
 
     $('tTipo').innerHTML='<thead><tr><th>Tipo de contacto</th><th>¿Contacto efectivo?</th><th class="r">Leads</th><th class="r">% del total</th><th class="r">Marcados vendió</th><th class="r">Compraron (cruce)</th><th class="r">Conversión</th></tr></thead><tbody>'
       +tipos.map(t=>`<tr><td><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:${colT(t.nombre)};margin-right:8px"></span>${esc(t.nombre)}</td><td>${NOEF.has(t.nombre)?'<span class="pill bad">No</span>':'<span class="pill ok">Sí</span>'}</td><td class="r">${N0(t.leads)}</td><td class="r">${P(t.leads/n)}</td><td class="r">${t.vendidos}</td><td class="r">${t.compraron}</td><td class="r">${t.leads?P(t.vendidos/t.leads):'—'}</td></tr>`).join('')
@@ -304,21 +316,25 @@ footer .in{padding-block:20px;display:flex;justify-content:space-between;gap:12p
     $('cmpCard').hidden=one;
     if(!one){
       $('cmpTitle').textContent='Mes a mes en la selección';
+      VALS.chCmp={fmt:(v,i)=>[K(v),cs(ms[i].casos)]};
       mk('chCmp',{data:{labels:ms.map(short),datasets:[{type:'bar',label:'Venta',data:ms.map(m=>m.venta),backgroundColor:C.blue,borderRadius:6,order:2},{type:'line',label:'Objetivo',data:ms.map(m=>m.objetivo),borderColor:C.orange,backgroundColor:C.orange,borderWidth:3,pointRadius:4,order:1}]},options:{maintainAspectRatio:false,plugins:{legend:{position:'bottom'},tooltip:{callbacks:{label:c=>c.dataset.label+': '+S(c.raw)}}},scales:yK}});
       $('tCmp').innerHTML='<thead><tr><th>Mes</th><th class="r">Venta</th><th class="r">Meta</th><th class="r">%</th><th class="r">Casos</th><th class="r">Ticket</th></tr></thead><tbody>'+ms.map(m=>`<tr><td>${short(m)}</td><td class="r">${S(m.venta)}</td><td class="r">${S(m.objetivo)}</td><td class="r"><span class="pill ${m.cumplimiento>=1?'ok':m.cumplimiento>=.75?'warn':'bad'}">${P(m.cumplimiento)}</span></td><td class="r">${m.casos}</td><td class="r">${S(m.ticket)}</td></tr>`).join('')+`<tr class="tot"><td>Total</td><td class="r">${S(venta)}</td><td class="r">${S(obj)}</td><td class="r">${P(venta/obj)}</td><td class="r">${casos}</td><td class="r">${S(venta/casos)}</td></tr></tbody>`;
     }
 
     // Diario
-    const dias=ms.flatMap(m=>{const nd=new Date(+m.periodo.slice(0,4),+m.periodo.slice(5,7),0).getDate();const dm=Object.fromEntries(m.dias.map(x=>[x.fecha,x.venta]));return [...Array(nd).keys()].map(k=>{const f=m.periodo+'-'+String(k+1).padStart(2,'0');return {f,v:dm[f]||0};});}).filter(x=>x.f<=d.datos_hasta||!enCurso);
+    const dias=ms.flatMap(m=>{const nd=new Date(+m.periodo.slice(0,4),+m.periodo.slice(5,7),0).getDate();const dm=Object.fromEntries(m.dias.map(x=>[x.fecha,x.venta])),dc=Object.fromEntries(m.dias.map(x=>[x.fecha,x.casos]));return [...Array(nd).keys()].map(k=>{const f=m.periodo+'-'+String(k+1).padStart(2,'0');return {f,v:dm[f]||0,c:dc[f]||0};});}).filter(x=>x.f<=d.datos_hasta||!enCurso);
     const isMon=f=>new Date(f+'T12:00:00').getDay()===1;
     $('dayTitle').textContent=one?'Venta diaria':'Venta diaria · '+ms.length+' meses';
+    VALS.chDia={fmt:(v,i)=>[Kc(v),String(dias[i].c)],size:10,min:10,pad:30};
     mk('chDia',{type:'bar',data:{labels:dias.map(x=>one?String(+x.f.slice(8)):x.f.slice(8)+'/'+x.f.slice(5,7)),datasets:[{label:'Venta',data:dias.map(x=>x.v),backgroundColor:dias.map(x=>isMon(x.f)?C.cyan:C.blue),borderRadius:2}]},options:{maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>S(c.raw)}}},scales:{...yK,x:{ticks:{maxRotation:0,autoSkip:true,maxTicksLimit:one?31:16}}}}});
 
     // Semanas: un mes → semanas; varios → semanas de cada mes agrupadas
     $('semTitle').textContent=one?'Venta por semana':'Venta por semana de cada mes';
     if(one){const m=ms[0];
+      VALS.chSem={fmt:(v,i)=>[K(v),cs(m.semanas[i].casos)]};
       mk('chSem',{type:'bar',data:{labels:m.semanas.map(s=>'Semana '+s.semana),datasets:[{label:'Venta',data:m.semanas.map(s=>s.venta),backgroundColor:C.blue,borderRadius:6},{type:'line',label:'Meta semanal',data:m.semanas.map(()=>m.objetivo/4),borderColor:C.orange,pointRadius:0,borderWidth:2}]},options:{maintainAspectRatio:false,plugins:{legend:{position:'bottom'},tooltip:{callbacks:{label:c=>c.dataset.label+': '+S(c.raw),afterLabel:c=>c.datasetIndex===0?m.semanas[c.dataIndex].casos+' casos':''}}},scales:yK}});
     } else {
+      VALS.chSem={fmt:(v,i,di)=>[Kc(v),String((ms[i].semanas.find(s=>s.semana===di+1)||{casos:0}).casos)],size:10,min:16,pad:30};
       mk('chSem',{type:'bar',data:{labels:ms.map(short),datasets:[1,2,3,4].map((w,k)=>({label:'Semana '+w,data:ms.map(m=>(m.semanas.find(s=>s.semana===w)||{venta:0}).venta),backgroundColor:['#93c5fd','#60a5fa','#2563eb','#1e3a8a'][k],borderRadius:3}))},options:{maintainAspectRatio:false,plugins:{legend:{position:'bottom'},tooltip:{callbacks:{label:c=>c.dataset.label+': '+S(c.raw)}}},scales:yK}});
     }
 
@@ -336,17 +352,20 @@ footer .in{padding-block:20px;display:flex;justify-content:space-between;gap:12p
 
     // Producto
     const fam=merge(ms,'familias');
+    VALS.chFam={fmt:(v,i)=>K(v)+' · '+cs(fam[i].casos)};
     mk('chFam',{type:'bar',data:{labels:fam.map(f=>f.nombre),datasets:[{label:'Venta',data:fam.map(f=>f.venta),backgroundColor:C.blue,borderRadius:4}]},options:{indexAxis:'y',maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>S(c.raw)+' · '+P(c.raw/venta)}}},scales:{x:{ticks:{callback:v=>K(v)}}}}});
     const prod=merge(ms,'productos').slice(0,10);
     $('tProd').innerHTML='<thead><tr><th>Producto</th><th class="r">Unid.</th><th class="r">Venta</th></tr></thead><tbody>'+prod.map(p=>`<tr><td style="white-space:normal">${esc(p.nombre)}</td><td class="r">${Math.round(p.unidades)}</td><td class="r">${S(p.venta)}</td></tr>`).join('')+'</tbody>';
     const gr=ms.flatMap(m=>m.ventas_grandes.map(g=>({...g,mes:short(m)}))).sort((a,b)=>b.venta-a.venta).slice(0,10);
     $('tGrandes').innerHTML='<thead><tr>'+(one?'':'<th>Mes</th>')+'<th>Caso</th><th>Zona</th><th>Asesor</th><th>Familia</th><th class="r">Venta</th></tr></thead><tbody>'+gr.map(g=>`<tr>${one?'':`<td>${g.mes}</td>`}<td>${esc(g.caso)}</td><td>${esc(g.provincia)}</td><td>${esc(g.asesor)}</td><td>${esc(g.familia)}</td><td class="r">${S(g.venta)}</td></tr>`).join('')+'</tbody>';
     const tr={};ms.forEach(m=>m.tramos_ticket.forEach(t=>{const o=tr[t.tramo]||(tr[t.tramo]={tramo:t.tramo,venta:0,casos:0});o.venta+=t.venta;o.casos+=t.casos;}));const trs=M[0].tramos_ticket.map(t=>tr[t.tramo]);
+    VALS.chTramo={fmt:(v,i)=>[K(v),cs(trs[i].casos)]};
     mk('chTramo',{type:'bar',data:{labels:trs.map(t=>t.tramo),datasets:[{label:'Venta',data:trs.map(t=>t.venta),backgroundColor:C.blue,borderRadius:6}]},options:{maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>S(c.raw)+' · '+trs[c.dataIndex].casos+' casos'}}},scales:yK}});
 
     // Canal y zona
     doughnut('chOrig',merge(ms,'origen'));doughnut('chPago',merge(ms,'pago'));
     const prov=merge(ms,'provincias').slice(0,10);
+    VALS.chProv={fmt:(v,i)=>K(v)+' · '+cs(prov[i].casos)};
     mk('chProv',{type:'bar',data:{labels:prov.map(p=>p.nombre),datasets:[{label:'Venta',data:prov.map(p=>p.venta),backgroundColor:C.cyan,borderRadius:4}]},options:{indexAxis:'y',maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>S(c.raw)}}},scales:{x:{ticks:{callback:v=>K(v)}}}}});
 
     renderLeads(ms, label);
