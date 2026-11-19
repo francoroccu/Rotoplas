@@ -411,10 +411,18 @@ def build(wb):
                     "familia": title(max(caso_fam[k].items(), key=lambda x: x[1])[0])}
                    for k, v in sorted(caso_monto.items(), key=lambda x: -x[1])[:8]]
 
-        dias = defaultdict(lambda: [0.0, set()])
+        # Casos por día y por semana con la misma regla que el total del mes:
+        # si la planilla trae «caso único» en todas las líneas, se suma esa columna
+        # (un caso cuenta una sola vez aunque tenga líneas en varios días).
+        usa_cu = all(r["caso_unico"] is not None for r in rs)
+        dias = defaultdict(lambda: [0.0, set(), 0.0])
         for r in rs:
             if r["fecha"]:
                 dias[r["fecha"]][0] += r["total"]; dias[r["fecha"]][1].add(r["caso"] if r["caso"] is not None else id(r))
+                dias[r["fecha"]][2] += r["caso_unico"] or 0
+        sem_cu = defaultdict(float)
+        for r in rs:
+            sem_cu[int(r["semana"] or 0)] += r["caso_unico"] or 0
 
         wa = sum(r["total"] for r in rs if "WHATSAPP" in r["canal"])
         meses.append({
@@ -424,9 +432,9 @@ def build(wb):
             "casos": n_casos, "unidades": round(uni, 2),
             "ticket": round(venta / n_casos, 2) if n_casos else 0,
             "venta_whatsapp": round(wa, 2), "venta_llamada": round(venta - wa, 2),
-            "semanas": [{"semana": s["nombre"], "venta": s["venta"], "casos": s["casos"]}
+            "semanas": [{"semana": s["nombre"], "venta": s["venta"], "casos": int(sem_cu[s["nombre"]]) if usa_cu else s["casos"]}
                         for s in sorted(group(lambda r: int(r["semana"] or 0)), key=lambda x: x["nombre"])],
-            "dias": [{"fecha": d.isoformat(), "venta": round(v[0], 2), "casos": len(v[1])} for d, v in sorted(dias.items())],
+            "dias": [{"fecha": d.isoformat(), "venta": round(v[0], 2), "casos": int(v[2]) if usa_cu else len(v[1])} for d, v in sorted(dias.items())],
             "asesores": [{**a, "meta": metas_ase.get(p, {}).get(a["nombre"])} for a in group(lambda r: r["asesor"])]
                         + [{"nombre": n, "venta": 0.0, "lineas": 0, "unidades": 0.0, "casos": 0, "meta": v}
                            for n, v in metas_ase.get(p, {}).items() if n not in {r["asesor"] for r in rs}],
